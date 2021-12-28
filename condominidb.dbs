@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="condominidb" id="Project-f0a" database="MongoDb" >
+	<comment><![CDATA[CondoMini database]]></comment>
+	<schema name="condominidb" >
+		<table name="users" prior="Collection" >
+			<comment><![CDATA[The registered users of the app]]></comment>
+			<column name="firstName" type="string" jt="12" >
+				<comment><![CDATA[The firstName of the user.]]></comment>
+			</column>
+			<column name="lastName" type="string" jt="12" >
+				<comment><![CDATA[The lastName of the user]]></comment>
+			</column>
+			<column name="register" type="object" jt="4999544" >
+				<comment><![CDATA[The register info of the user]]></comment>
+				<column name="email" type="string" jt="12" >
+					<comment><![CDATA[The email of the user]]></comment>
+				</column>
+				<column name="phone" type="string" jt="12" >
+					<comment><![CDATA[The phone of the user]]></comment>
+				</column>
+			</column>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-2321" show_relation="columns" >
+		<entity schema="condominidb" name="users" column="register" color="3986C1" x="224" y="96" />
+		<entity schema="condominidb" name="users" color="C1D8EE" x="48" y="48" />
+	</layout>
+</project>
