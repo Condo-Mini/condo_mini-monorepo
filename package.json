@@ -1,0 +1,51 @@
+{
+  "name": "condo_mini-api",
+  "description": "A condominium management app.",
+  "version": "1.0.0",
+  "main": "./src/api/server.js",
+  "scripts": {
+    "api:start": "node -r esm .",
+    "api:start:dev": "nodemon -r esm .",
+    "test": "mocha src/tests/**/*$NAME*.test.js --exit",
+    "test:coverage": "nyc --all npm run test",
+    "test:coverage:json": "nyc --all --reporter=json-summary npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Condo-Mini/condo_mini-api.git"
+  },
+  "author": "Matheus Martino do Amaral",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Condo-Mini/condo_mini-api/issues"
+  },
+  "homepage": "https://github.com/Condo-Mini/condo_mini-api#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.2.2",
+    "mongoose": "^6.1.4"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
+    "deep-equal-in-any-order": "^1.1.15",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "faker": "^5.5.3",
+    "lint-staged": "^12.1.4",
+    "migrate-mongo": "^8.2.3",
+    "nodemon": "^2.0.15",
+    "nyc": "15.1.0",
+    "prettier": "^2.5.1",
+    "supertest": "^6.1.6"
+  }
+}
