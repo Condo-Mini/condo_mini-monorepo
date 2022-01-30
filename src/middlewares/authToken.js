@@ -2,27 +2,35 @@ import httpStatus from '../constants/httpStatus';
 import AuthError from '../errors/AuthError';
 import messages from '../messages';
 import config from '../config';
-import jwt from 'jsonwebtoken';
+import { verifyTokenAndExtractUser } from '../services/authService/commons';
+import { userRoleEnum } from '../models/enums/userEnums';
 
-export default (req) => {
+export default async (req) => {
+  const { id } = req.params;
   const jwtToken = req.headers.authorization;
   const { jwtSecret } = config;
+  const { role: roleToBeCreated  } = req.body;
 
-  if (!jwtToken) {
-    throw new AuthError({
-      statusCode: httpStatus.UNAUTHORIZED,
-      message: messages.ERROR.AUTH.AUTH_HEADER_IS_MISSING,
-    });
+  const isRoleToBeCreatedAdmin = roleToBeCreated === userRoleEnum.ADMIN;
+
+  if (!isRoleToBeCreatedAdmin) {
+    return
   }
 
-  try {
-    const { user: loggedUser } = jwt.verify(jwtToken, jwtSecret);
+  const loggedUser = await verifyTokenAndExtractUser({ jwtToken, jwtSecret });
 
+  const isLoggedUserAdmin = loggedUser.subscription.role === userRoleEnum.ADMIN;
+  const isLoggedUserResourceOwner = loggedUser.id === id;
+
+  if (
+    isLoggedUserAdmin ||
+    isLoggedUserResourceOwner
+  ) {
     req.loggedUser = loggedUser;
-  } catch (error) {
+  } else {
     throw new AuthError({
-      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
-      message: error.message,
+      statusCode: httpStatus.FORBIDDEN,
+      message: messages.ERROR.AUTH.FORBIDDEN_ACTION,
     });
   }
 };
