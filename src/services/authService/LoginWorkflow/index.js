@@ -29,7 +29,7 @@ export default class LoginWorkflow extends BaseWorkflow {
         email,
         password,
         role: user.subscription.role,
-        userId: user.id,
+        id: user.id,
       },
     };
 

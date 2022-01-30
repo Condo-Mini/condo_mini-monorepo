@@ -19,8 +19,8 @@ export default class Controller {
   };
 
   addPre(middleware) {
-    this._preMiddlewares.push((req, res, next) => {
-      middleware(req, res);
+    this._preMiddlewares.push(async (req, res, next) => {
+      await middleware(req, res);
       next();
     });
 

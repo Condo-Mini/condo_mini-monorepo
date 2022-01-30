@@ -1,4 +1,5 @@
 import md5 from 'md5';
+import { userRoleEnum } from '../../../models/enums/userEnums';
 import UserModel from '../../../models/UserModel';
 import BaseWorkflow from '../../BaseWorkflow';
 import { validateUniqueEmailIndex } from './validators';
@@ -9,7 +10,8 @@ export default class CreateWorkflow extends BaseWorkflow {
     lastName: rawInput.lastName,
     email: rawInput.email,
     password: rawInput.password,
-    role: rawInput.role,
+    role: rawInput.role || userRoleEnum.RESIDENT,
+    loggedUser: rawInput.loggedUser,
   });
 
   validate = async (input) => {
