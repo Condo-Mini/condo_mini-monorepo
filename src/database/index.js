@@ -1,7 +1,20 @@
 import mongoose from 'mongoose';
+import config from '../config';
 import { sanitizeSingleValueToArray } from '../helpers/arrayHelper';
 
 export default class Database {
+  static async connect() {
+    let dbUri;
+
+    if (config.dbAtlas) {
+      dbUri = `mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}?retryWrites=true&w=majority`;
+    } else {
+      dbUri = `mongodb://${config.dbHost}:${config.dbPort}/${config.dbName}`;
+    }
+
+    return mongoose.connect(dbUri).catch((error) => console.log(error));
+  }
+
   static configSchema({ schema, options }) {
     const newSchema = new mongoose.Schema(schema, options);
 

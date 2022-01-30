@@ -1,13 +1,12 @@
 import config from '../config';
 import mongoose from 'mongoose';
 import app from './app';
-
-const { apiPort, dbPort, dbHost, dbName } = config;
+import Database from '../database';
 
 const startServer = () => {
-  const port = apiPort || 8800;
+  const port = config.apiPort || 8800;
 
-  mongoose.connect(`mongodb://${dbHost}:${dbPort}/${dbName}`);
+  Database.connect();
 
   app.listen(port, () => {
     console.log(`HTTP Server listening on port: ${port}`);

@@ -29,9 +29,6 @@ export default class Controller {
   }
 
   addStandardMiddlewares(middleware) {
-    this.addPre(authenticationMiddleware);
-    this.addPre(middleware);
-    this.addPre(permissionMiddleware);
     this.addPre((req) => {
       const { error } = this.validationSchema.validate(req.body);
 
@@ -44,6 +41,9 @@ export default class Controller {
         });
       }
     });
+    this.addPre(authenticationMiddleware);
+    this.addPre(middleware);
+    this.addPre(permissionMiddleware);
 
     return this;
   }
