@@ -29,7 +29,10 @@
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.2.2",
-    "mongoose": "^6.1.4"
+    "mongoose": "^6.1.4",
+    "md5": "2.3.0",
+    "express-rescue": "1.1.26",
+    "joi": "^17.4.2"
   },
   "devDependencies": {
     "chai": "^4.3.4",
