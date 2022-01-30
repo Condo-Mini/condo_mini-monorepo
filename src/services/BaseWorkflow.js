@@ -17,5 +17,5 @@ export default class BaseWorkflow {
     await this.validate(input);
 
     return this.process(input);
-  }
+  };
 }

@@ -1,4 +1,5 @@
 import md5 from 'md5';
+import { userPermissionLevels } from '../../../constants/userConstants';
 import { userRoleEnum } from '../../../models/enums/userEnums';
 import UserModel from '../../../models/UserModel';
 import BaseWorkflow from '../../BaseWorkflow';
@@ -21,7 +22,7 @@ export default class CreateWorkflow extends BaseWorkflow {
   };
 
   process = async (input) => {
-    const { firstName, lastName, email, password, role } = input;
+    const { firstName, lastName, email, password, role, loggedUser } = input;
 
     const user = new UserModel({
       firstName,
@@ -29,8 +30,13 @@ export default class CreateWorkflow extends BaseWorkflow {
       subscription: {
         email,
         password: md5(password),
-        role,
+        permission: {
+          role,
+          level: String(userPermissionLevels[role]),
+        },
       },
+      createdBy: loggedUser.id,
+      createdAt: new Date(),
     });
 
     await user.save();

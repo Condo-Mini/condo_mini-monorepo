@@ -7,7 +7,7 @@ export default {
   createdBy: {
     type: ObjectId,
     ref: 'user',
-    // required: true
+    required: true,
   },
   updatedBy: {
     type: ObjectId,
@@ -19,6 +19,5 @@ export default {
   },
   updatedAt: {
     type: Date,
-    default: Date.now,
   },
 };

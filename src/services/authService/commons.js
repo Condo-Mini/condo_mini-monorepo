@@ -15,13 +15,13 @@ export const verifyTokenAndExtractUser = async ({ jwtToken, jwtSecret }) => {
   try {
     const { user } = jwt.verify(jwtToken, jwtSecret);
 
-    const loggedUser = await UserModel.findOne({ id: user.id })
+    const loggedUser = await UserModel.findById(user.id);
 
-    return loggedUser
+    return loggedUser;
   } catch (error) {
     throw new AuthError({
       statusCode: httpStatus.UNPROCESSABLE_ENTITY,
       message: error.message,
     });
   }
-}
+};

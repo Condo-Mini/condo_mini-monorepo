@@ -1,7 +1,8 @@
 import rescue from 'express-rescue';
 import httpStatus from '../constants/httpStatus';
 import ValidationError from '../errors/ValidationError';
-import authToken from '../middlewares/authToken';
+import authenticationMiddleware from '../middlewares/authenticationMiddleware';
+import permissionMiddleware from '../middlewares/permissionMiddleware';
 
 export default class Controller {
   constructor({ validationSchema } = {}) {
@@ -27,7 +28,10 @@ export default class Controller {
     return this;
   }
 
-  addStandardMiddlewares() {
+  addStandardMiddlewares(middleware) {
+    this.addPre(authenticationMiddleware);
+    this.addPre(middleware);
+    this.addPre(permissionMiddleware);
     this.addPre((req) => {
       const { error } = this.validationSchema.validate(req.body);
 
@@ -40,8 +44,6 @@ export default class Controller {
         });
       }
     });
-
-    this.addPre(authToken);
 
     return this;
   }

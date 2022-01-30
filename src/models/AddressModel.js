@@ -9,7 +9,7 @@ const addressSchema = Database.configSchema({
     toJSON: { getters: true, virtuals: true, versionKey: false },
     toObject: { getters: true, virtuals: true, versionKey: false },
     id: true,
-  }
-})
+  },
+});
 
 export default mongoose.model('address', addressSchema);

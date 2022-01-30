@@ -4,19 +4,19 @@ import auditSchema from './auditSchema';
 export default new Schema({
   street: {
     type: String,
-    required: true
+    required: true,
   },
   number: {
     type: String,
-    required: true
+    required: true,
   },
   city: {
     type: String,
-    required: true
+    required: true,
   },
   zipCode: {
     type: String,
-    required: true
+    required: true,
   },
-  ...auditSchema
-})
+  ...auditSchema,
+});

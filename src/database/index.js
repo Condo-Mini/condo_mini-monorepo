@@ -5,7 +5,10 @@ export default class Database {
   static configSchema({ schema, options }) {
     const newSchema = new mongoose.Schema(schema, options);
 
-    newSchema.statics.findWith = async function findWith({ excludedIds, ...params }) {
+    newSchema.statics.findWith = async function findWith({
+      excludedIds,
+      ...params
+    }) {
       return this.findOne({
         ...params,
         ...(excludedIds
@@ -14,7 +17,10 @@ export default class Database {
       });
     };
 
-    newSchema.statics.existsWith = async function existsWith({ excludedIds, ...params }) {
+    newSchema.statics.existsWith = async function existsWith({
+      excludedIds,
+      ...params
+    }) {
       const document = await this.findOne({
         ...params,
         ...(excludedIds

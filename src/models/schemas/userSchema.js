@@ -11,7 +11,7 @@ export default new Schema({
     required: true,
   },
   lastName: {
-    type: String
+    type: String,
   },
   subscription: {
     email: {
@@ -22,10 +22,16 @@ export default new Schema({
       type: String,
       required: true,
     },
-    role: {
-      type: String,
-      enum: Object.values(userRoleEnum),
-      default: userRoleEnum.RESIDENT,
+    permission: {
+      role: {
+        type: String,
+        required: true,
+        enum: Object.values(userRoleEnum),
+      },
+      level: {
+        type: String,
+        required: true,
+      },
     },
   },
   address: {

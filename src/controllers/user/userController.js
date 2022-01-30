@@ -2,25 +2,16 @@ import Controller from '../Controller';
 import userService from '../../services/userService';
 import httpStatus from '../../constants/httpStatus';
 import UserDTO from './DTOs/UserDTO';
-import validationSchema from './userValidationSchema';
-import authToken from '../../middlewares/authToken';
+import validationSchema from './userValidationSchema'
+import { userPermissionLevels } from '../../constants/userConstants';
+import { userRoleEnum } from '../../models/enums/userEnums';
 
 const userController = {};
 
-userController.create = new Controller()
-  .addPre((req) => {
-    const { error } = validationSchema.validate(req.body);
-
-    if (error) {
-      const { message } = error;
-
-      throw new ValidationError({
-        message,
-        statusCode: httpStatus.BAD_REQUEST,
-      });
-    }
+userController.create = new Controller({ validationSchema })
+  .addStandardMiddlewares((req) => {
+    req.permissionLevel = userPermissionLevels[userRoleEnum.ADMIN];
   })
-  .addPre(authToken)
   .setEndpoint(
     async (req) => {
       const { firstName, lastName, email, password, role } = req.body;
