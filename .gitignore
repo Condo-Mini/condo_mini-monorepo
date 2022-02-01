@@ -4,3 +4,8 @@ node_modules/
 # dotenv environment variables file
 .env
 .env.test
+
+coverage/
+.nyc_output
+
+condominidb.dbs.bak

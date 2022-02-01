@@ -1,9 +1,11 @@
 import express from 'express';
+import UserModel from '../models/UserModel';
 
 const router = express.Router();
 
-router.get('/check', (_req, res) =>
-  res.status(200).json({ message: "I'm good. Thanks." })
-);
+router.get('/check', async (_req, res) => {
+  const users = await UserModel.find({});
+  res.json(users);
+});
 
 export default router;

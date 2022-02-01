@@ -3,13 +3,13 @@ import config from '../config';
 import { sanitizeSingleValueToArray } from '../helpers/arrayHelper';
 
 export default class Database {
-  static async connect() {
+  static async connect(dbName = config.dbName) {
     let dbUri;
 
     if (config.dbAtlas) {
-      dbUri = `mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}?retryWrites=true&w=majority`;
+      dbUri = `mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${dbName}?retryWrites=true&w=majority`;
     } else {
-      dbUri = `mongodb://${config.dbHost}:${config.dbPort}/${config.dbName}`;
+      dbUri = `mongodb://${config.dbHost}:${config.dbPort}/${dbName}`;
     }
 
     return mongoose.connect(dbUri).catch((error) => console.log(error));

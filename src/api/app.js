@@ -1,12 +1,12 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import routes from '../routes';
+import loaders from '../loaders';
 import errorHandler from '../middlewares/errorHandler';
 
 const app = express();
 const { healthCheck, authRoutes, addressRoutes, userRoutes } = routes;
 
-app.use(bodyParser.json());
+loaders.express.init(app);
 
 app.use('/health', healthCheck);
 
