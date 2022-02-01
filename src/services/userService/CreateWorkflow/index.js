@@ -27,7 +27,7 @@ export default class CreateWorkflow extends BaseWorkflow {
     const user = new UserModel({
       firstName,
       lastName,
-      subscription: {
+      profile: {
         email,
         password: md5(password),
         permission: {

@@ -13,7 +13,7 @@ export default new Schema({
   lastName: {
     type: String,
   },
-  subscription: {
+  profile: {
     email: {
       type: String,
       required: true,

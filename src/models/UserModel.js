@@ -12,6 +12,6 @@ const userSchema = Database.configSchema({
   },
 });
 
-userSchema.index({ 'subscription.email': 1 }, { unique: true });
+userSchema.index({ 'profile.email': 1 }, { unique: true });
 
 export default mongoose.model('user', userSchema);

@@ -8,11 +8,11 @@ export default class UserDTO {
     this.updatedBy = user.updatedBy;
     this.createdAt = user.createdAt;
     this.updatedAt = user.updatedAt;
-    this.subscription = {
-      email: user.subscription.email,
+    this.profile = {
+      email: user.profile.email,
       permission: {
-        role: user.subscription.permission.role,
-        level: user.subscription.permission.level,
+        role: user.profile.permission.role,
+        level: user.profile.permission.level,
       },
     };
   }

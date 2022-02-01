@@ -21,14 +21,14 @@ export default class LoginWorkflow extends BaseWorkflow {
     const { email, password } = input;
     const { jwtSecret } = config;
 
-    const user = await UserModel.findOne({ 'subscription.email': email });
+    const user = await UserModel.findOne({ 'profile.email': email });
 
     const jwtConfig = { algorithm: 'HS256', expiresIn: '30m' };
     const jwtPayload = {
       user: {
         email,
         password,
-        role: user.subscription.role,
+        role: user.profile.role,
         id: user.id,
       },
     };

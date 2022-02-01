@@ -6,7 +6,7 @@ export default (req) => {
   const { loggedUser, permissionLevel } = req;
 
   const doesLoggedUserHasPermission =
-    loggedUser.subscription.permission.level >= permissionLevel;
+    loggedUser.profile.permission.level >= permissionLevel;
 
   if (!doesLoggedUserHasPermission) {
     throw new AuthError({

@@ -3,15 +3,16 @@
   "description": "A condominium management app.",
   "version": "1.0.0",
   "main": "./src/api/server.js",
-  "type": "module",
   "scripts": {
-    "api:start": "node -r esm .",
-    "api:start:dev": "nodemon -r esm .",
-    "test": "NODE_ENV=test mocha ./tests/**/*.test.js",
-    "test:single:entity": "NODE_ENV=test mocha ./tests/$ENTITY/*.test.js --exit",
+    "api:start": "node -r @babel/register -r regenerator-runtime/runtime .",
+    "api:start:dev": "nodemon -r @babel/register -r regenerator-runtime/runtime .",
+    "db:create:migration": "migrate-mongo create",
+    "db:migrate:up": "migrate-mongo up",
+    "db:migrate:down": "migrate-mongo down",
+    "test": "NODE_ENV=test mocha -r @babel/register -r regenerator-runtime/runtime ./tests/**/*.test.js",
+    "test:single:entity": "NODE_ENV=test mocha -r @babel/register -r regenerator-runtime/runtime ./tests/$ENTITY/*.test.js --exit",
     "test:coverage": "nyc --all npm run test",
-    "test:coverage:json": "nyc --all --reporter=json-summary npm run test",
-    "migrate-mongo:create": "migrate-mongo create"
+    "test:coverage:json": "nyc --all --reporter=json-summary npm run test"
   },
   "repository": {
     "type": "git",
@@ -24,18 +25,21 @@
   },
   "homepage": "https://github.com/Condo-Mini/condo_mini-api#readme",
   "dependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.16.9",
     "axios": "^0.24.0",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express-rescue": "1.1.26",
-    "esm": "^3.2.25",
     "express": "^4.17.2",
+    "express-rescue": "1.1.26",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "md5": "2.3.0",
     "mongodb": "^4.2.2",
-    "mongoose": "^6.1.4"
+    "mongoose": "^6.1.4",
+    "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
     "chai": "^4.3.4",

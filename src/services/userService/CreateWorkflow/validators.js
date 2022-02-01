@@ -5,7 +5,7 @@ import UserModel from '../../../models/UserModel';
 
 export const validateUniqueEmailIndex = async (email) => {
   const isEmailAlreadyRegistered = await UserModel.existsWith({
-    'subscription.email': email,
+    'profile.email': email,
   });
 
   if (isEmailAlreadyRegistered) {
