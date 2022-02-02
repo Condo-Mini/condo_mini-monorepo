@@ -5,14 +5,16 @@
   "main": "./src/api/server.js",
   "scripts": {
     "api:start": "node -r @babel/register -r regenerator-runtime/runtime .",
-    "api:start:dev": "nodemon -r @babel/register -r regenerator-runtime/runtime .",
+    "api:start:dev": "NODE_ENV=dev nodemon -r @babel/register -r regenerator-runtime/runtime .",
     "db:create:migration": "migrate-mongo create",
     "db:migrate:up": "migrate-mongo up",
     "db:migrate:down": "migrate-mongo down",
-    "test": "NODE_ENV=test mocha -r @babel/register -r regenerator-runtime/runtime ./tests/**/*.test.js",
-    "test:single:entity": "NODE_ENV=test mocha -r @babel/register -r regenerator-runtime/runtime ./tests/$ENTITY/*.test.js --exit",
-    "test:coverage": "nyc --all npm run test",
-    "test:coverage:json": "nyc --all --reporter=json-summary npm run test"
+    "test": "NODE_ENV=test mocha './tests/**/*.test.js' --exclude './tests/**/*.staging.test.js'",
+    "test:single": "NODE_ENV=test mocha",
+    "test:staging": "NODE_ENV=staging mocha './tests/**/*.staging.test.js'",
+    "test:coverage": "NODE_ENV=test nyc --all npm run test",
+    "test:coverage:json": "NODE_ENV=test nyc --all --reporter=json-summary npm run test",
+    "test:coverage:html": "NODE_ENV=test nyc --reporter=lcov --reporter=html mocha './tests/**/*.test.js'"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "md5": "2.3.0",
+    "mocha.parallel": "^0.15.6",
     "mongodb": "^4.2.2",
     "mongoose": "^6.1.4",
     "regenerator-runtime": "^0.13.9"

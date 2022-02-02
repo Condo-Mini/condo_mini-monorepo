@@ -4,7 +4,7 @@ import schema from './schemas/userSchema';
 
 const userSchema = Database.configSchema({
   schema,
-  ptions: {
+  options: {
     read: 'primary',
     toJSON: { getters: true, virtuals: true, versionKey: false },
     toObject: { getters: true, virtuals: true, versionKey: false },

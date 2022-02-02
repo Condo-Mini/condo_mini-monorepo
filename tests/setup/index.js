@@ -28,7 +28,7 @@ const setUpApp = () => {
 };
 
 before('Init', async () => {
-  ensureEnvironment();
+  // ensureEnvironment();
   const dbName = process.env.TEST_DB_NAME || 'condominidb_test';
 
   config.dbName = dbName;

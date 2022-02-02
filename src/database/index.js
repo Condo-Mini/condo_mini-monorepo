@@ -5,14 +5,20 @@ import { sanitizeSingleValueToArray } from '../helpers/arrayHelper';
 export default class Database {
   static async connect(dbName = config.dbName) {
     let dbUri;
+    let message;
 
     if (config.dbAtlas) {
       dbUri = `mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${dbName}?retryWrites=true&w=majority`;
+      message = `Mongoose is connected to ${dbName} on Atlas!`;
     } else {
       dbUri = `mongodb://${config.dbHost}:${config.dbPort}/${dbName}`;
+      message = `Mongoose is connected to ${dbName}!`;
     }
 
-    return mongoose.connect(dbUri).catch((error) => console.log(error));
+    return mongoose
+      .connect(dbUri)
+      .then(() => console.log(message))
+      .catch(() => console.log('Fail to connect with Mongoose!'));
   }
 
   static configSchema({ schema, options }) {
