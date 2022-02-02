@@ -1,5 +1,4 @@
 import UserModel from '../../src/models/UserModel';
-import mongoose from 'mongoose';
 
 describe('User', function () {
   this.timeout(40000);

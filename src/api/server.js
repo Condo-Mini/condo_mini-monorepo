@@ -2,7 +2,7 @@ import config from '../config';
 import app from './app';
 import loaders from '../loaders';
 
-const startServer = () => {
+const startServer = async () => {
   const port = config.apiPort || 8800;
 
   loaders.mongoose.init();
@@ -12,4 +12,4 @@ const startServer = () => {
   });
 };
 
-startServer();
+startServer().catch(() => console.log('Fail to connect with Express!'));
