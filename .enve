@@ -1,9 +1,0 @@
-NODE_ENV="dev"
-
-API_PORT="8800"
-
-DB_PORT="27017"
-DB_HOST="localhost"
-DB_NAME="condominidb_dev"
-
-JWT_SECRET="condominidb_dev_secret_key"
