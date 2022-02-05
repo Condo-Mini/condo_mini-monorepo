@@ -6,12 +6,7 @@ import express from 'express';
 import config from '../../src/config';
 import mongoose from 'mongoose';
 import { startServer } from '../../src/api/server';
-
-const ensureEnvironment = () => {
-  if (config.nodeEnv !== 'test') {
-    throw new Error("Tests cannot run on an environment other than 'test'.");
-  }
-};
+import { ensureEnvironment } from '../../src/helpers/databaseHelper';
 
 const setUpChai = () => {
   global.expect = chai.expect;
@@ -31,7 +26,10 @@ const setUpApp = async () => {
 };
 
 before('Init', async () => {
-  // ensureEnvironment();
+  ensureEnvironment({
+    allowedEnvs: ['test', 'staging'],
+    env: config.nodeEnv,
+  });
   const dbName = process.env.TEST_DB_NAME || 'condominidb_test';
 
   config.dbName = dbName;

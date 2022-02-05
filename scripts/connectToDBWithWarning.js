@@ -27,5 +27,5 @@ if (answer === confirmationMessage) {
 ${error.message}`)
     );
 } else {
-  console.log('Later!');
+  console.log('Wrong answer. Later!');
 }
