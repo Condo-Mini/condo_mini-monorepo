@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { userRoleEnum } from '../enums/userEnums';
-import auditSchema from './auditSchema';
+import userRoleEnum from './enums/userRoleEnum';
+import auditSchema from '../schemas/auditSchema';
 
 const { Schema } = mongoose;
 const { ObjectId } = Schema.Types;

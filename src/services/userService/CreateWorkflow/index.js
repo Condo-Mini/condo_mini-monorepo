@@ -1,7 +1,7 @@
 import md5 from 'md5';
 import { userPermissionLevels } from '../../../constants/userConstants';
-import { userRoleEnum } from '../../../models/enums/userEnums';
-import UserModel from '../../../models/UserModel';
+import userRoleEnum from '../../../models/user/enums/userRoleEnum';
+import UserModel from '../../../models/user/UserModel';
 import BaseWorkflow from '../../BaseWorkflow';
 import { validateUniqueEmailIndex } from './validators';
 

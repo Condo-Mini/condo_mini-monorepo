@@ -5,6 +5,7 @@ import loaders from '../../src/loaders';
 import express from 'express';
 import config from '../../src/config';
 import mongoose from 'mongoose';
+import { startServer } from '../../src/api/server';
 
 const ensureEnvironment = () => {
   if (config.nodeEnv !== 'test') {
@@ -18,13 +19,15 @@ const setUpChai = () => {
   global.should = chai.should();
 };
 
-const setUpApp = () => {
+const setUpApp = async () => {
   const app = express();
 
   loaders.express.init(app);
 
   global.agent = request.agent(app);
   global.parallel = parallel;
+
+  startServer(app);
 };
 
 before('Init', async () => {
@@ -45,7 +48,7 @@ before('Init', async () => {
   );
 
   setUpChai();
-  setUpApp();
+  await setUpApp();
 });
 
 after('Finish', async () => {

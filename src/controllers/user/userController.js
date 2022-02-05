@@ -2,9 +2,9 @@ import Controller from '../Controller';
 import userService from '../../services/userService';
 import httpStatus from '../../constants/httpStatus';
 import UserDTO from './DTOs/UserDTO';
-import validationSchema from './userValidationSchema'
+import validationSchema from './userValidationSchema';
 import { userPermissionLevels } from '../../constants/userConstants';
-import { userRoleEnum } from '../../models/enums/userEnums';
+import userRoleEnum from '../../models/user/enums/userRoleEnum';
 
 const userController = {};
 

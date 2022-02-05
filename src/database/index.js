@@ -9,16 +9,20 @@ export default class Database {
 
     if (config.dbAtlas) {
       dbUri = `mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${dbName}?retryWrites=true&w=majority`;
-      message = `Mongoose is connected to ${dbName} on Atlas!`;
+      message = `Server is connected to ${dbName} on Atlas!`;
     } else {
       dbUri = `mongodb://${config.dbHost}:${config.dbPort}/${dbName}`;
-      message = `Mongoose is connected to ${dbName}!`;
+      message = `Server is connected to ${dbName} on port ${config.dbPort}!`;
     }
 
     return mongoose
       .connect(dbUri)
       .then(() => console.log(message))
-      .catch(() => console.log('Fail to connect with Mongoose!'));
+      .catch((error) =>
+        console.error(`
+Fail to connect to ${dbName} database!
+${error.message}`)
+      );
   }
 
   static configSchema({ schema, options }) {

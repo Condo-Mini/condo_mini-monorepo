@@ -2,10 +2,12 @@
   "name": "condo_mini-api",
   "description": "A condominium management app.",
   "version": "1.0.0",
-  "main": "./src/api/server.js",
+  "main": "./src/api/index.js",
   "scripts": {
     "api:start": "node -r @babel/register -r regenerator-runtime/runtime .",
     "api:start:dev": "NODE_ENV=dev nodemon -r @babel/register -r regenerator-runtime/runtime .",
+    "api:start:prod": "NODE_ENV=prod node -r @babel/register -r regenerator-runtime/runtime './scripts/connectToDBWithWarning.js'",
+    "api:start:script": "NODE_ENV=prod node -r @babel/register -r regenerator-runtime/runtime './scripts/script.js'",
     "db:create:migration": "migrate-mongo create",
     "db:migrate:up": "migrate-mongo up",
     "db:migrate:down": "migrate-mongo down",
@@ -42,6 +44,7 @@
     "mocha.parallel": "^0.15.6",
     "mongodb": "^4.2.2",
     "mongoose": "^6.1.4",
+    "readline-sync": "^1.4.10",
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {

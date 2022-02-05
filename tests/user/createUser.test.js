@@ -1,8 +1,6 @@
 import UserModel from '../../src/models/UserModel';
-import mongoose from 'mongoose';
 
 describe('User', function () {
-  this.timeout(40000);
   it('Create', async () => {
     const user = new UserModel({
       firstName: 'Apollo',

@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { userRoleEnum } from '../../models/enums/userEnums';
+import userRoleEnum from '../../models/user/enums/userRoleEnum';
 
 export default Joi.object({
   firstName: Joi.string().required(),

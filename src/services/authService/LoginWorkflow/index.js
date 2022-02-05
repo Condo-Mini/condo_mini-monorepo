@@ -1,9 +1,8 @@
-import UserModel from '../../../models/UserModel';
+import UserModel from '../../../models/user/UserModel';
 import { validateLogin } from './validators';
 import config from '../../../config';
 import jwt from 'jsonwebtoken';
 import BaseWorkflow from '../../BaseWorkflow';
-import { parseMongooseObjectToObjectLiteral } from '../../../helpers/objectHelper';
 
 export default class LoginWorkflow extends BaseWorkflow {
   format = (rawInput) => ({

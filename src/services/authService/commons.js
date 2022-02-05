@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import UserModel from '../../models/UserModel';
+import UserModel from '../../models/user/UserModel';
 import AuthError from '../../errors/AuthError';
 import httpStatus from '../../constants/httpStatus';
 import messages from '../../messages';

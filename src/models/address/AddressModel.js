@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import Database from '../database';
-import schema from './schemas/userSchema';
+import Database from '../../database';
+import schema from '../schemas/addressSchema';
 
-const userSchema = Database.configSchema({
+const addressSchema = Database.configSchema({
   schema,
   options: {
     read: 'primary',
@@ -12,6 +12,4 @@ const userSchema = Database.configSchema({
   },
 });
 
-userSchema.index({ 'profile.email': 1 }, { unique: true });
-
-export default mongoose.model('user', userSchema);
+export default mongoose.model('address', addressSchema);

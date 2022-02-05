@@ -2,7 +2,7 @@ import md5 from 'md5';
 import httpStatus from '../../constants/httpStatus';
 import UserError from '../../errors/UserError';
 import messages from '../../messages';
-import UserModel from '../../models/UserModel';
+import UserModel from '../../models/user/UserModel';
 
 export const validateIfEmailIsRegistered = async (email) => {
   const isEmailRegistered = await UserModel.existsWith({
