@@ -25,10 +25,13 @@ export default class LoginWorkflow extends BaseWorkflow {
     const jwtConfig = { algorithm: 'HS256', expiresIn: '30m' };
     const jwtPayload = {
       user: {
+        id: user.id,
         email,
         password,
-        role: user.profile.role,
-        id: user.id,
+        permission: {
+          role: user.profile.permission.role,
+          level: user.profile.permission.level,
+        },
       },
     };
 
