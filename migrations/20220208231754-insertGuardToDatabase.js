@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const { ObjectId } = mongoose.Types;
 
-const sudoAdminEmail = 'sudo@condomini.com';
+const guardEmail = 'guard@condomini.com';
 
 module.exports = {
   async up(db) {
@@ -12,18 +12,18 @@ module.exports = {
 
     try {
       await usersCollection.insertOne({
-        _id: ObjectId('6202f57d9da0674ce45ae4e2'),
-        firstName: 'Sudo',
+        firstName: 'Guard',
         lastName: 'Admin',
         profile: {
-          email: sudoAdminEmail,
-          password: md5('sudopwd'),
+          email: guardEmail,
+          password: md5('guardpwd'),
           permission: {
-            role: 'sudo',
-            level: 1000,
+            role: 'guard',
+            level: 10,
           },
         },
         createdAt: now,
+        createdBy: ObjectId('6202f57d9da0674ce45ae4e2'),
       });
     } catch (error) {
       console.error(error.message);
@@ -35,7 +35,7 @@ module.exports = {
     const usersCollection = db.collection('users');
 
     try {
-      await usersCollection.deleteOne({ 'profile.email': sudoAdminEmail });
+      await usersCollection.deleteOne({ 'profile.email': guardEmail });
     } catch (error) {
       console.error(error.message);
       throw new Error(error.message);

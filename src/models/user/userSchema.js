@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import userRoleEnum from './enums/userRoleEnum';
 import auditSchema from '../schemas/auditSchema';
+import { userPermissionLevels } from '../../constants/userConstants';
 
 const { Schema } = mongoose;
 const { ObjectId } = Schema.Types;
@@ -29,8 +30,10 @@ export default new Schema({
         enum: Object.values(userRoleEnum),
       },
       level: {
-        type: String,
+        type: Number,
         required: true,
+        min: userPermissionLevels[userRoleEnum.RESIDENT],
+        max: userPermissionLevels[userRoleEnum.SUDO],
       },
     },
   },

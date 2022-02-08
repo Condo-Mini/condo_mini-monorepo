@@ -32,7 +32,7 @@ export default class CreateWorkflow extends BaseWorkflow {
         password: md5(password),
         permission: {
           role,
-          level: String(userPermissionLevels[role]),
+          level: userPermissionLevels[role],
         },
       },
       createdBy: loggedUser.id,
