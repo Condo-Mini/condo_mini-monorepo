@@ -1,11 +1,11 @@
 import httpStatus from '../../../constants/httpStatus';
 import AuthError from '../../../errors/AuthError';
 import messages from '../../../messages';
-import { validateEmailAndPassword } from '../../userService/commonValidators';
+import userService from '../../userService';
 
 export const validateLogin = async ({ email, password }) => {
   try {
-    await validateEmailAndPassword({ email, password });
+    await userService.validateEmailAndPassword({ email, password });
   } catch (error) {
     throw new AuthError({
       statusCode: httpStatus.UNPROCESSABLE_ENTITY,
