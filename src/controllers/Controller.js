@@ -6,7 +6,9 @@ import permissionMiddleware from '../middlewares/permissionMiddleware';
 
 export default class Controller {
   constructor({ validationSchema } = {}) {
-    this.validationSchema = validationSchema;
+    if (validationSchema) {
+      this.validationSchema = validationSchema;
+    }
   }
 
   _preMiddlewares = [];
@@ -30,15 +32,17 @@ export default class Controller {
 
   addStandardMiddlewares(middleware) {
     this.addPre((req) => {
-      const { error } = this.validationSchema.validate(req.body);
+      if (this.validationSchema) {
+        const { error } = this.validationSchema.validate(req.body);
 
-      if (error) {
-        const { message } = error;
+        if (error) {
+          const { message } = error;
 
-        throw new ValidationError({
-          message,
-          statusCode: httpStatus.BAD_REQUEST,
-        });
+          throw new ValidationError({
+            message,
+            statusCode: httpStatus.BAD_REQUEST,
+          });
+        }
       }
     });
     this.addPre(authenticationMiddleware);

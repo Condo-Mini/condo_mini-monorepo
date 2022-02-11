@@ -3,14 +3,13 @@ import userService from '../../services/userService';
 import httpStatus from '../../constants/httpStatus';
 import UserDTO from './DTOs/UserDTO';
 import validationSchema from './userValidationSchema';
-import { userPermissionLevels } from '../../constants/userConstants';
 import userRoleEnum from '../../models/user/enums/userRoleEnum';
 
 const userController = {};
 
 userController.create = new Controller({ validationSchema })
   .addStandardMiddlewares((req) => {
-    req.permissionLevel = userPermissionLevels[userRoleEnum.ADMIN];
+    req.permissionRole = userRoleEnum.GUARD;
   })
   .setEndpoint(
     async (req) => {
