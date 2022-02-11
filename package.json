@@ -1,0 +1,69 @@
+{
+  "name": "condo_mini-api",
+  "description": "A condominium management app.",
+  "version": "1.0.0",
+  "main": "./src/api/index.js",
+  "scripts": {
+    "api:start": "node -r @babel/register -r regenerator-runtime/runtime .",
+    "api:start:dev": "NODE_ENV=dev nodemon -r @babel/register -r regenerator-runtime/runtime .",
+    "api:start:prod": "NODE_ENV=prod node -r @babel/register -r regenerator-runtime/runtime './scripts/connectToDBWithWarning.js'",
+    "api:start:script": "NODE_ENV=prod node -r @babel/register -r regenerator-runtime/runtime './scripts/script.js'",
+    "db:create:migration": "migrate-mongo create",
+    "db:migrate:up": "migrate-mongo up",
+    "db:migrate:down": "migrate-mongo down",
+    "test": "NODE_ENV=test mocha './tests/**/*.test.js' --exclude './tests/**/*.staging.test.js'",
+    "test:single": "NODE_ENV=test mocha",
+    "test:staging": "NODE_ENV=staging mocha './tests/**/*.staging.test.js'",
+    "test:coverage": "NODE_ENV=test nyc --all npm run test",
+    "test:coverage:json": "NODE_ENV=test nyc --all --reporter=json-summary npm run test",
+    "test:coverage:html": "NODE_ENV=test nyc --reporter=lcov --reporter=html mocha './tests/**/*.test.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Condo-Mini/condo_mini-api.git"
+  },
+  "author": "Matheus Martino do Amaral",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Condo-Mini/condo_mini-api/issues"
+  },
+  "homepage": "https://github.com/Condo-Mini/condo_mini-api#readme",
+  "dependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.16.9",
+    "axios": "^0.24.0",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-rescue": "1.1.26",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "2.3.0",
+    "mocha.parallel": "^0.15.6",
+    "mongodb": "^4.2.2",
+    "mongoose": "^6.1.4",
+    "readline-sync": "^1.4.10",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
+    "cross-env": "7.0.2",
+    "deep-equal-in-any-order": "^1.1.15",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "faker": "^5.5.3",
+    "lint-staged": "^12.1.4",
+    "migrate-mongo": "^8.2.3",
+    "mocha": "^9.2.0",
+    "nodemon": "^2.0.15",
+    "nyc": "15.1.0",
+    "prettier": "^2.5.1",
+    "supertest": "^6.1.6"
+  }
+}
