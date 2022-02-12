@@ -3,6 +3,14 @@ import UserModel from '../../models/user/UserModel';
 import AuthError from '../../errors/AuthError';
 import httpStatus from '../../constants/httpStatus';
 import messages from '../../messages';
+import config from '../../config';
+
+export const sign = ({ jwtPayload, expiration: expirationInSeconds }) => {
+  const { jwtSecret } = config;
+  const jwtConfig = { algorithm: 'HS256', expiresIn: expirationInSeconds };
+
+  return jwt.sign(jwtPayload, jwtSecret, jwtConfig);
+};
 
 export const verifyTokenAndExtractUser = async ({ jwtToken, jwtSecret }) => {
   if (!jwtToken) {

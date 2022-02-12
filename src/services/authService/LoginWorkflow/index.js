@@ -1,8 +1,8 @@
 import UserModel from '../../../models/user/UserModel';
 import { validateLogin } from './validators';
-import config from '../../../config';
-import jwt from 'jsonwebtoken';
 import BaseWorkflow from '../../BaseWorkflow';
+import { sign } from '../commons';
+import timeConstants from '../../../constants/timeConstants';
 
 export default class LoginWorkflow extends BaseWorkflow {
   format = (rawInput) => ({
@@ -18,11 +18,10 @@ export default class LoginWorkflow extends BaseWorkflow {
 
   process = async (input) => {
     const { email, password } = input;
-    const { jwtSecret } = config;
 
     const user = await UserModel.findOne({ 'profile.email': email });
 
-    const jwtConfig = { algorithm: 'HS256', expiresIn: '30m' };
+    const expiresIn = 30 * timeConstants.SECONDS_PER_MINUTE;
     const jwtPayload = {
       user: {
         id: user.id,
@@ -35,7 +34,7 @@ export default class LoginWorkflow extends BaseWorkflow {
       },
     };
 
-    const token = jwt.sign(jwtPayload, jwtSecret, jwtConfig);
+    const token = sign({ jwtPayload, expiration: expiresIn });
 
     return {
       token,

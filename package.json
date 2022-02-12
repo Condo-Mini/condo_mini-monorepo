@@ -8,6 +8,7 @@
     "api:start:dev": "NODE_ENV=dev nodemon -r @babel/register -r regenerator-runtime/runtime .",
     "api:start:prod": "NODE_ENV=prod node -r @babel/register -r regenerator-runtime/runtime './scripts/connectToDBWithWarning.js'",
     "api:start:script": "NODE_ENV=prod node -r @babel/register -r regenerator-runtime/runtime './scripts/script.js'",
+    "db:reset:users": "NODE_ENV=dev node -r @babel/register -r regenerator-runtime/runtime './scripts/resetUsersCollection.js'",
     "db:create:migration": "migrate-mongo create",
     "db:migrate:up": "migrate-mongo up",
     "db:migrate:down": "migrate-mongo down",
