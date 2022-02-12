@@ -5,6 +5,10 @@ export const baseRequest = (
   callback,
   done
 ) => {
+  if (!expectedStatus) {
+    throw new Error('Status code not defined.');
+  }
+
   agent[method](url)
     .query(query)
     .set('authorization', authorization)

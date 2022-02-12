@@ -1,11 +1,11 @@
 import request from 'supertest';
+import mongoose from 'mongoose';
 import parallel from 'mocha.parallel';
 import chai from 'chai';
 import loaders from '../../src/loaders';
 import express from 'express';
 import config from '../../src/config';
-import mongoose from 'mongoose';
-import { startServer } from '../../src/api/server';
+import startServer from '../../src/api/server';
 import { ensureEnvironment } from '../../src/helpers/databaseHelper';
 
 const setUpChai = () => {
