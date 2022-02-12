@@ -16,7 +16,8 @@
     "test:staging": "NODE_ENV=staging mocha './tests/**/*.staging.test.js'",
     "test:coverage": "NODE_ENV=test nyc --all npm run test",
     "test:coverage:json": "NODE_ENV=test nyc --all --reporter=json-summary npm run test",
-    "test:coverage:html": "NODE_ENV=test nyc --reporter=lcov --reporter=html mocha './tests/**/*.test.js'"
+    "test:coverage:html": "NODE_ENV=test nyc --reporter=lcov --reporter=html mocha './tests/**/*.test.js'",
+    "encrypt": "node ./scripts/encrypt.js"
   },
   "repository": {
     "type": "git",

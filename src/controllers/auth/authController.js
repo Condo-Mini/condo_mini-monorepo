@@ -3,6 +3,7 @@ import validationSchema from './authValidationSchema';
 import authService from '../../services/authService';
 import httpStatus from '../../constants/httpStatus';
 import LoginDTO from './DTOs/LoginDTO';
+import ValidationError from '../../errors/ValidationError';
 
 const authController = {};
 
