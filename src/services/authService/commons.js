@@ -4,8 +4,13 @@ import AuthError from '../../errors/AuthError';
 import httpStatus from '../../constants/httpStatus';
 import messages from '../../messages';
 import config from '../../config';
+import timeConstants from '../../constants/timeConstants';
+import { userPermissionLevels } from '../../constants/userConstants';
 
-export const sign = ({ jwtPayload, expiration: expirationInSeconds }) => {
+export const sign = ({
+  jwtPayload,
+  expiration: expirationInSeconds = 30 * timeConstants.SECONDS_PER_MINUTE,
+}) => {
   const { jwtSecret } = config;
   const jwtConfig = { algorithm: 'HS256', expiresIn: expirationInSeconds };
 

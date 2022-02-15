@@ -9,7 +9,8 @@ export const baseRequest = (
     throw new Error('Status code not defined.');
   }
 
-  agent[method](url)
+  agent
+    .post('http://localhost:3000/user')
     .query(query)
     .set('authorization', authorization)
     .set('Origin', 'localhost')

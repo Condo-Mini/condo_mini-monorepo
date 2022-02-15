@@ -1,11 +1,9 @@
 import rescue from 'express-rescue';
-import httpStatus from '../constants/httpStatus';
-import ValidationError from '../errors/ValidationError';
 import authenticationMiddleware from '../middlewares/authenticationMiddleware';
 import permissionMiddleware from '../middlewares/permissionMiddleware';
 
 export default class Controller {
-  constructor({ validationSchema } = {}) {
+  constructor(validationSchema) {
     if (validationSchema) {
       this.validationSchema = validationSchema;
     }
@@ -30,23 +28,9 @@ export default class Controller {
     return this;
   }
 
-  addStandardMiddlewares(middleware) {
-    this.addPre((req) => {
-      if (this.validationSchema) {
-        const { error } = this.validationSchema.validate(req.body);
-
-        if (error) {
-          const { message } = error;
-
-          throw new ValidationError({
-            message,
-            statusCode: httpStatus.BAD_REQUEST,
-          });
-        }
-      }
-    });
+  addStandardMiddlewares(injectPermissionLevelMiddleware) {
     this.addPre(authenticationMiddleware);
-    this.addPre(middleware);
+    this.addPre(injectPermissionLevelMiddleware);
     this.addPre(permissionMiddleware);
 
     return this;

@@ -2,12 +2,11 @@ import Controller from '../Controller';
 import userService from '../../services/userService';
 import httpStatus from '../../constants/httpStatus';
 import UserDTO from './DTOs/UserDTO';
-import validationSchema from './userValidationSchema';
 import userRoleEnum from '../../models/user/enums/userRoleEnum';
 
 const userController = {};
 
-userController.create = new Controller({ validationSchema })
+userController.create = new Controller()
   .addStandardMiddlewares((req) => {
     req.permissionRole = userRoleEnum.GUARD;
   })

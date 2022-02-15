@@ -1,8 +1,17 @@
 import express from 'express';
 import userController from '../controllers/user/userController';
+import { createUserValidationSchema } from '../controllers/user/userValidationSchemas';
+import Route from './Route';
 
 const router = express.Router();
 
-router.post('/', userController.create);
+const createUserEndpoint = new Route({
+  url: 'user/',
+  validationSchema: createUserValidationSchema,
+});
+router.post(
+  ...createUserEndpoint.addStandardRouteMiddlewares(),
+  userController.create
+);
 
 export default router;

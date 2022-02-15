@@ -17,7 +17,7 @@ export default class LoginWorkflow extends BaseWorkflow {
   };
 
   process = async (input) => {
-    const { email, password } = input;
+    const { email } = input;
 
     const user = await UserModel.findOne({ 'profile.email': email });
 
@@ -26,7 +26,6 @@ export default class LoginWorkflow extends BaseWorkflow {
       user: {
         id: user.id,
         email,
-        password,
         permission: {
           role: user.profile.permission.role,
           level: user.profile.permission.level,
