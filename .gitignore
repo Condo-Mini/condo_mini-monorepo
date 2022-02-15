@@ -7,6 +7,8 @@ node_modules/
 .env.staging
 .env.prod
 
+scripts/sandbox.js
+
 coverage/
 .nyc_output
 
