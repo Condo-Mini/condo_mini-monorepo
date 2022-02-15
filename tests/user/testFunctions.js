@@ -27,8 +27,7 @@ export default {
         expect(res.body).to.equal({});
       };
 
-      done();
-      // baseUserRequest({ given, when, then, assertCallback, done });
+      baseUserRequest({ given, when, then, assertCallback, done });
     },
   },
 };

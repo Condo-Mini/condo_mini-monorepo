@@ -13,12 +13,14 @@
     "db:migrate:up": "migrate-mongo up",
     "db:migrate:down": "migrate-mongo down",
     "test": "NODE_ENV=test mocha './tests/**/*.test.js' --exclude './tests/**/*.staging.test.js'",
+    "test:sandbox": "NODE_ENV=test mocha './tests/sandbox/sandbox.test.js'",
     "test:single": "NODE_ENV=test mocha",
     "test:staging": "NODE_ENV=staging mocha './tests/**/*.staging.test.js'",
     "test:coverage": "NODE_ENV=test nyc --all npm run test",
     "test:coverage:json": "NODE_ENV=test nyc --all --reporter=json-summary npm run test",
     "test:coverage:html": "NODE_ENV=test nyc --reporter=lcov --reporter=html mocha './tests/**/*.test.js'",
-    "encrypt": "node ./scripts/encrypt.js"
+    "encrypt": "node ./scripts/encrypt.js",
+    "sandbox": "node -r @babel/register -r regenerator-runtime/runtime ./scripts/sandbox.js"
   },
   "repository": {
     "type": "git",

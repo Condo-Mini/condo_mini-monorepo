@@ -1,7 +1,7 @@
-import { userPermissionLevels } from '../../../constants/userConstants';
 import { encrypt } from '../../../helpers/cryptographyHelper';
 import userRoleEnum from '../../../models/user/enums/userRoleEnum';
 import UserModel from '../../../models/user/UserModel';
+import { getPermissionInfoFromUserRole } from '../../userService/commons';
 import BaseWorkflow from '../../BaseWorkflow';
 import { validateUniqueEmailIndex } from './validators';
 
@@ -31,8 +31,7 @@ export default class CreateWorkflow extends BaseWorkflow {
         email,
         password: encrypt(password),
         permission: {
-          role,
-          level: userPermissionLevels[role],
+          ...getPermissionInfoFromUserRole(role),
         },
       },
       createdBy: loggedUser.id,

@@ -16,13 +16,14 @@ const setUpChai = () => {
 
 const setUpApp = async () => {
   const app = express();
+  const port = process.env.API_PORT;
 
   loaders.express.init(app);
 
   global.agent = request.agent(app);
   global.parallel = parallel;
 
-  startServer(app);
+  startServer(app, port);
 };
 
 before('Init', async () => {
