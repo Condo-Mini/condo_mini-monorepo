@@ -9,7 +9,7 @@ export const validateLogin = async ({ email, password }) => {
   } catch (error) {
     throw new AuthError({
       statusCode: httpStatus.UNPROCESSABLE_ENTITY,
-      message: messages.ERROR.AUTH.INVALID_EMAIL_OR_PASSWORD,
+      message: messages.get('ERROR.AUTH.INVALID_EMAIL_OR_PASSWORD'),
     });
   }
 };

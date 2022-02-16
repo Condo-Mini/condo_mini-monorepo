@@ -8,11 +8,11 @@ export const findById = async (userId) => UserModel.findById(userId);
 
 export const findByIdAndValidateIfExists = async (userId) => {
   const user = await findById(userId);
-  console.log(user);
+
   if (!user) {
     throw new UserError({
       statusCode: httpStatus.UNPROCESSABLE_ENTITY,
-      message: messages.ERROR.USER.NOT_FOUND(userId),
+      message: messages.get('ERROR.USER.NOT_FOUND', userId),
     });
   }
 

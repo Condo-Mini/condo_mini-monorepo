@@ -21,7 +21,7 @@ export const verifyTokenAndExtractUser = async ({ jwtToken, jwtSecret }) => {
   if (!jwtToken) {
     throw new AuthError({
       statusCode: httpStatus.UNAUTHORIZED,
-      message: messages.ERROR.AUTH.AUTH_HEADER_IS_MISSING,
+      message: messages.get('ERROR.AUTH.AUTH_HEADER_IS_MISSING'),
     });
   }
 
