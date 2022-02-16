@@ -13,6 +13,6 @@ export const createUserValidationSchema = {
 
 export const getUserValidationSchema = {
   params: Joi.object({
-    id: Joi.string().required(),
+    id: Joi.objectId().required(),
   }),
 };
