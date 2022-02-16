@@ -14,7 +14,7 @@ const ERROR = {
     EMAIL_ALREADY_REGISTERED: 'Email is already registered',
     EMAIL_IS_NOT_REGISTERED: 'Email is not registered in the system',
     INVALID_PASSWORD: 'Invalid password',
-    NOT_FOUNT: 'The user was not found',
+    NOT_FOUND: (...args) => `Could not found a User with the id ${args[0]}`,
   },
 };
 

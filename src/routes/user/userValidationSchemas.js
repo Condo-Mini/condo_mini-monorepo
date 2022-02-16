@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from 'joi-oid';
 import userRoleEnum from '../../models/user/enums/userRoleEnum';
 
 export const createUserValidationSchema = {
@@ -8,5 +8,11 @@ export const createUserValidationSchema = {
     email: Joi.string().required(),
     password: Joi.string().required(),
     role: Joi.string().valid(...Object.values(userRoleEnum)),
+  }),
+};
+
+export const getUserValidationSchema = {
+  params: Joi.object({
+    id: Joi.string().required(),
   }),
 };
