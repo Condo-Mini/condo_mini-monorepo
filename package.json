@@ -43,6 +43,7 @@
     "express": "^4.17.2",
     "express-rescue": "1.1.26",
     "joi": "^17.4.2",
+    "joi-oid": "^1.1.2",
     "jsonwebtoken": "^8.5.1",
     "md5": "2.3.0",
     "mocha.parallel": "^0.15.6",
