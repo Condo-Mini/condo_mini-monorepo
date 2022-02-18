@@ -8,7 +8,7 @@ export default class ValidationError extends BaseError {
 
     this.error = {
       statusCode: httpStatus.BAD_REQUEST,
-      message: messages.ERROR.VALIDATION.VALIDATION_ERROR,
+      message: messages.get('ERROR.VALIDATION.VALIDATION_ERROR'),
       errors: error.errors,
     };
   }

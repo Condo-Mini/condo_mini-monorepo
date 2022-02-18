@@ -14,7 +14,7 @@ export default (req) => {
   if (!doesLoggedUserHaveEndpointPermission) {
     throw new AuthError({
       statusCode: httpStatus.FORBIDDEN,
-      message: messages.ERROR.AUTH.FORBIDDEN_ENDPOINT(permissionRole),
+      message: messages.get('ERROR.AUTH.FORBIDDEN_ENDPOINT', permissionRole),
     });
   }
 
@@ -25,7 +25,8 @@ export default (req) => {
     if (!doesLoggedUserHaveHierarchyPermission) {
       throw new AuthError({
         statusCode: httpStatus.FORBIDDEN,
-        message: messages.ERROR.AUTH.FORBIDDEN_HIERARCHY(
+        message: messages.get(
+          'ERROR.AUTH.FORBIDDEN_HIERARCHY',
           loggedUserPermissionRole
         ),
       });

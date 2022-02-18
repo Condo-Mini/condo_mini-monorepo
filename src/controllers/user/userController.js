@@ -29,4 +29,19 @@ userController.create = new Controller()
     { successStatusCode: httpStatus.CREATED, DTOClass: UserDTO }
   );
 
+userController.getById = new Controller()
+  .addStandardMiddlewares((req) => {
+    req.permissionRole = userRoleEnum.RESIDENT;
+  })
+  .setEndpoint(
+    async (req) => {
+      const { params } = req;
+
+      const user = await userService.workflows.getById({ ...params });
+
+      return user;
+    },
+    { successStatusCode: httpStatus.OK, DTOClass: UserDTO }
+  );
+
 export default userController;
