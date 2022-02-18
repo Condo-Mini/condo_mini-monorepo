@@ -8,6 +8,7 @@ node_modules/
 .env.prod
 
 scripts/sandbox.js
+.vscode
 
 coverage/
 .nyc_output
