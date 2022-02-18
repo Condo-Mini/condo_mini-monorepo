@@ -2,10 +2,6 @@ import { Schema } from 'mongoose';
 import auditSchema from '../schemas/auditSchema';
 
 export default new Schema({
-  country: {
-    type: String,
-    required: true,
-  },
   state: {
     type: String,
     required: true,
@@ -25,6 +21,16 @@ export default new Schema({
   zipCode: {
     type: String,
     required: true,
+  },
+  areaCode: {
+    type: String,
+    required: true,
+  },
+  details: {
+    type: String,
+  },
+  notes: {
+    type: String,
   },
   ...auditSchema,
 });

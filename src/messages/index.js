@@ -16,6 +16,13 @@ const ERROR = {
     INVALID_PASSWORD: 'Invalid password',
     NOT_FOUNT: 'The user was not found',
   },
+  ADDRESS: {
+    NOT_FOUND_WITH_ZIP_CODE: 'Address with zip code %s not found',
+  },
+  REGEX: {
+    INVALID_EXPRESSION:
+      'Expression %s does not match with the pattern policy %s',
+  },
 };
 
 export default {
