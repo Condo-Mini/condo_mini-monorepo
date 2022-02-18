@@ -9,14 +9,12 @@ export const validateEmailAndPassword = async ({ email, password }) => {
 
   if (!user) {
     throw new UserError({
-      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
       message: messages.get('ERROR.USER.EMAIL_IS_NOT_REGISTERED'),
     });
   }
 
   if (!compare(password, user.profile.password)) {
     throw new UserError({
-      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
       message: messages.get('ERROR.USER.INVALID_PASSWORD'),
     });
   }

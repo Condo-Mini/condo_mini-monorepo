@@ -10,7 +10,6 @@ export const validateUniqueEmailIndex = async (email) => {
 
   if (isEmailAlreadyRegistered) {
     throw new UserError({
-      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
       message: messages.get('ERROR.USER.EMAIL_ALREADY_REGISTERED'),
     });
   }

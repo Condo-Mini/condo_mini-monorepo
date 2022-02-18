@@ -11,7 +11,6 @@ export const findByIdAndValidateIfExists = async (userId) => {
 
   if (!user) {
     throw new UserError({
-      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
       message: messages.get('ERROR.USER.NOT_FOUND', userId),
     });
   }
