@@ -1,4 +1,3 @@
-import httpStatus from '../../../constants/httpStatus';
 import UserModel from '../../../models/user/UserModel';
 import UserError from '../../../errors/UserError';
 import messages from '../../../messages';

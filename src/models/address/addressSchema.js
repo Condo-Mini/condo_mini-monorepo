@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose';
 import auditSchema from '../schemas/auditSchema';
+import addressCreationTypeEnum from './enums/addressCreationTypeEnum';
 
 export default new Schema({
   state: {
@@ -31,6 +32,15 @@ export default new Schema({
   },
   notes: {
     type: String,
+  },
+  updatableFields: {
+    type: Array,
+    required: true,
+  },
+  creationType: {
+    type: String,
+    required: true,
+    enum: Object.values(addressCreationTypeEnum),
   },
   ...auditSchema,
 });
