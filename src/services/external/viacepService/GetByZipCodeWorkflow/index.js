@@ -10,8 +10,11 @@ import messages from '../../../../messages';
 import BaseWorkflow from '../../../BaseWorkflow';
 
 export default class GetByZipCode extends BaseWorkflow {
+  _sanitizeZipCode = (zipCode) =>
+    zipCode.replace(sanitizeZipCodeReplacementPattern, '');
+
   format = (rawInput) => ({
-    zipCode: rawInput.zipCode,
+    zipCode: this._sanitizeZipCode(rawInput.zipCode),
   });
 
   validate = (input) => {
@@ -20,11 +23,8 @@ export default class GetByZipCode extends BaseWorkflow {
     validateExpressionPatternPolicy(zipCode, zipCodePattern);
   };
 
-  _sanitizeZipCode = (zipCode) =>
-    zipCode.replace(sanitizeZipCodeReplacementPattern, '');
-
   _fetchFormattedAddressInfoFromZipCode = async (sanitizedZipCode) => {
-    const { data: addressInfo } = await axios
+    const { data: viacepResponse } = await axios
       .get(`https://viacep.com.br/ws/${sanitizedZipCode}/json`)
       .catch((error) => {
         throw new BaseError({
@@ -33,7 +33,7 @@ export default class GetByZipCode extends BaseWorkflow {
         });
       });
 
-    if (addressInfo.erro) {
+    if (viacepResponse.erro) {
       throw new AddressError({
         message: messages.get(
           'ERROR.ADDRESS.NOT_FOUND_WITH_ZIP_CODE',
@@ -46,27 +46,25 @@ export default class GetByZipCode extends BaseWorkflow {
       uf: state,
       localidade: city,
       logradouro: street,
-      cep: zipCode,
       ddd: areaCode,
       complemento: details,
-    } = addressInfo;
+    } = viacepResponse;
 
     return {
       state,
       city,
       street,
-      zipCode,
       areaCode,
+      zipCode: sanitizedZipCode,
       ...(details ? { details } : {}),
     };
   };
 
   process = async (input) => {
     const { zipCode } = input;
-    const sanitizedZipCode = this._sanitizeZipCode(zipCode);
 
     const addressInfo = await this._fetchFormattedAddressInfoFromZipCode(
-      sanitizedZipCode
+      zipCode
     );
 
     return addressInfo;

@@ -12,6 +12,6 @@ const addressSchema = Database.configSchema({
   },
 });
 
-addressSchema.index({ zipCode: 1, number: 1 }, { unique: true });
+addressSchema.index({ street: 1, number: 1, zipCode: 1 }, { unique: true });
 
 export default mongoose.model('address', addressSchema);

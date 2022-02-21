@@ -1,4 +1,6 @@
+import { zipCodePattern } from '../../constants/addressContants';
 import httpStatus from '../../constants/httpStatus';
+import { validateExpressionPatternPolicy } from '../../helpers/regExHelper';
 import userRoleEnum from '../../models/user/enums/userRoleEnum';
 import addressService from '../../services/addressService';
 import Controller from '../Controller';
@@ -9,6 +11,13 @@ const addressController = {};
 addressController.createByZipCode = new Controller()
   .addStandardMiddlewares((req) => {
     req.permissionRole = userRoleEnum.GUARD;
+  })
+  .addPre((req) => {
+    const {
+      body: { zipCode },
+    } = req;
+
+    validateExpressionPatternPolicy(zipCode, zipCodePattern);
   })
   .setEndpoint(
     async (req) => {

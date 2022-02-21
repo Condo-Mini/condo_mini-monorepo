@@ -27,9 +27,6 @@
 			<index name="_id_" unique="PRIMARY_KEY" >
 				<column name="_id" />
 			</index>
-			<index name="profile.email_1" unique="UNIQUE_KEY" >
-				<column name="profile.email" />
-			</index>
 			<fk name="Virtual Relation" virtual="y" to_schema="condominidb_dev" to_table="users" >
 				<fk_column name="createdBy" pk="_id" />
 			</fk>
