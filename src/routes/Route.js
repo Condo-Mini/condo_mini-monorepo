@@ -8,9 +8,9 @@ export default class Route {
   }
 
   getPartialUrl() {
-    const [_entity, ...partial] = this.url.split('/');
+    const [_entity, ...partials] = this.url.split('/');
 
-    return `/${partial.join('/')}`;
+    return `/${partials.join('/')}`;
   }
 
   addValidationMiddleware() {
