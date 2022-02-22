@@ -1,10 +1,10 @@
-import { zipCodePattern } from '../../constants/addressContants';
-import httpStatus from '../../constants/httpStatus';
 import { validateExpressionPatternPolicy } from '../../helpers/regExHelper';
+import { zipCodePattern } from '../../constants/addressContants';
 import userRoleEnum from '../../models/user/enums/userRoleEnum';
 import addressService from '../../services/addressService';
-import Controller from '../Controller';
+import httpStatus from '../../constants/httpStatus';
 import AddressDTO from './DTOs/AddressDTO';
+import Controller from '../Controller';
 
 const addressController = {};
 
@@ -18,7 +18,6 @@ addressController.createByZipCode = new Controller()
     } = req;
 
     validateExpressionPatternPolicy(zipCode, zipCodePattern);
-    console.log(zipCode);
   })
   .setEndpoint(
     async (req) => {
