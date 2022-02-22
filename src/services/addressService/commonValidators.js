@@ -8,7 +8,7 @@ export const validateUniqueStreetNumberZipCodeIndex = async ({
   zipCode,
 }) => {
   const isAddressAlreadyRegistered = await AddressModel.existsWith({
-    ...(street ? { street } : {}),
+    street,
     number,
     zipCode,
   });

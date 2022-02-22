@@ -18,11 +18,7 @@ export default class CreateByZipCodeWorkflow extends BaseWorkflow {
     notes: rawInput.notes,
   });
 
-  validate = async (input) => {
-    const { street, number, zipCode } = input;
-
-    await validateUniqueStreetNumberZipCodeIndex({ street, number, zipCode });
-  };
+  validate = (t) => t;
 
   _getUpdatableFields = (addressInfo) =>
     Object.entries(addressInfo)
@@ -41,14 +37,20 @@ export default class CreateByZipCodeWorkflow extends BaseWorkflow {
       inputStreet: street,
     });
 
+    await validateUniqueStreetNumberZipCodeIndex({
+      street: addressInfo.street || street,
+      number,
+      zipCode,
+    });
+
     const address = new AddressModel({
+      ...addressInfo,
       updatableFields: this._getUpdatableFields(addressInfo),
       creationType: addressCreationTypeEnum.BY_ZIP_CODE,
-      ...(street ? { street } : {}),
+      street: addressInfo.street || street,
       ...(notes ? { notes } : {}),
       createdBy: loggedUser.id,
       createdAt: new Date(),
-      ...addressInfo,
       number,
     });
 
