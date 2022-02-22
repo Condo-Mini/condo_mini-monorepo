@@ -38,8 +38,17 @@ const templates = {
 export default {
   get: (errorPath, ...args) => {
     const paths = errorPath.split('.');
+
+    if (paths.length !== 3) {
+      throw new Error('Invalid template message path');
+    }
+
     const [messageType, entity, errorMessage] = paths;
     const template = templates[messageType][entity][errorMessage];
+
+    if (!template) {
+      throw new Error('Nonexistent template message');
+    }
 
     const hasPlaceHolders = template.indexOf('%s') !== -1;
 

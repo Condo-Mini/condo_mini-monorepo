@@ -18,6 +18,7 @@ addressController.createByZipCode = new Controller()
     } = req;
 
     validateExpressionPatternPolicy(zipCode, zipCodePattern);
+    console.log(zipCode);
   })
   .setEndpoint(
     async (req) => {

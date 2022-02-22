@@ -6,11 +6,13 @@ export default class RegExError extends BaseError {
   constructor(error) {
     super(error);
 
-    this.statusCode = httpStatus.UNPROCESSABLE_ENTITY;
-    this.message = messages.get(
-      'ERROR.REGEX.INVALID',
-      error.expression,
-      error.pattern
-    );
+    this.error = {
+      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
+      message: messages.get(
+        'ERROR.REGEX.INVALID_EXPRESSION',
+        error.expression,
+        error.pattern
+      ),
+    };
   }
 }

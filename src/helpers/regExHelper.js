@@ -1,12 +1,12 @@
 import RegExError from '../errors/RegExError';
 
 export const validateExpressionPatternPolicy = (expression, pattern) => {
-  const isArgValid = pattern.test(expression);
+  // const isExpressionValid = pattern.test(expression);
 
-  if (!isArgValid) {
-    throw new RegExError({
-      expression,
-      pattern,
-    });
-  }
+  // if (!isExpressionValid || 1 === 1) {
+  throw new RegExError({
+    expression,
+    pattern,
+  });
+  // }
 };
