@@ -1,20 +1,20 @@
-import BaseWorkflow from '../../BaseWorkflow';
-import viacepService from '../../external/viacepService';
-import AddressModel from '../../../models/address/AddressModel';
-import { validateUniqueStreetNumberZipCodeIndex } from '../commonValidators';
-import { sanitizeZipCodeReplacementPattern } from '../../../constants/addressContants';
-import { validateStreetRequireness } from './validators';
 import addressCreationTypeEnum from '../../../models/address/enums/addressCreationTypeEnum';
+import { sanitizeZipCodeReplacementPattern } from '../../../constants/addressContants';
+import { validateUniqueStreetNumberZipCodeIndex } from '../commonValidators';
+import AddressModel from '../../../models/address/AddressModel';
+import { validateStreetRequireness } from './validators';
+import viacepService from '../../external/viacepService';
+import BaseWorkflow from '../../BaseWorkflow';
 
 export default class CreateByZipCodeWorkflow extends BaseWorkflow {
   _sanitizeZipCode = (zipCode) =>
     zipCode.replace(sanitizeZipCodeReplacementPattern, '');
 
   format = (rawInput) => ({
+    zipCode: this._sanitizeZipCode(rawInput.zipCode),
     loggedUser: rawInput.loggedUser,
     street: rawInput.street,
     number: rawInput.number,
-    zipCode: this._sanitizeZipCode(rawInput.zipCode),
     notes: rawInput.notes,
   });
 
@@ -37,19 +37,19 @@ export default class CreateByZipCodeWorkflow extends BaseWorkflow {
     });
 
     validateStreetRequireness({
-      inputStreet: street,
       systemStreet: addressInfo.street,
+      inputStreet: street,
     });
 
     const address = new AddressModel({
-      number,
-      ...addressInfo,
-      createdAt: new Date(),
-      createdBy: loggedUser.id,
-      ...(notes ? { notes } : {}),
-      ...(street ? { street } : {}),
-      creationType: addressCreationTypeEnum.BY_ZIP_CODE,
       updatableFields: this._getUpdatableFields(addressInfo),
+      creationType: addressCreationTypeEnum.BY_ZIP_CODE,
+      ...(street ? { street } : {}),
+      ...(notes ? { notes } : {}),
+      createdBy: loggedUser.id,
+      createdAt: new Date(),
+      ...addressInfo,
+      number,
     });
 
     await address.save();
