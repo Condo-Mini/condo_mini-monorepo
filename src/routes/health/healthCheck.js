@@ -1,11 +1,15 @@
 import express from 'express';
-import UserModel from '../../models/user/UserModel';
+import defaultController from '../../controllers/default/defaultController';
+import Route from '../Route';
 
 const router = express.Router();
 
-router.get('/check', async (_req, res) => {
-  const users = await UserModel.find({});
-  res.json(users);
+const healthCheckEndpoint = new Route({
+  url: 'health/check',
 });
+router.get(
+  ...healthCheckEndpoint.addStandardRouteMiddlewares(),
+  defaultController.notImplemented
+);
 
 export default router;

@@ -1,4 +1,5 @@
 import rescue from 'express-rescue';
+import httpStatus from '../constants/httpStatus';
 import authenticationMiddleware from '../middlewares/authenticationMiddleware';
 import permissionMiddleware from '../middlewares/permissionMiddleware';
 
@@ -36,12 +37,14 @@ export default class Controller {
     return this;
   }
 
-  setEndpoint(endpoint, { successStatusCode, DTOClass }) {
-    this._endpoint = async (req, res) => {
-      const endpointResponse = await endpoint(req, res);
-      const responseWithDTO = new DTOClass(endpointResponse);
+  setEndpoint(endpoint, options = {}) {
+    const { successStatusCode = httpStatus.OK, DTOClass } = options;
 
-      return res.status(successStatusCode).json(responseWithDTO);
+    this._endpoint = async (req, res) => {
+      const endpointReturn = await endpoint(req, res);
+      const response = DTOClass ? new DTOClass(endpointReturn) : endpointReturn;
+
+      return res.status(successStatusCode).json(response);
     };
 
     return this._build();

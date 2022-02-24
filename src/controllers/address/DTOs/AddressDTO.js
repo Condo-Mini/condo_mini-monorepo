@@ -1,7 +1,8 @@
 export default class AddressDTO {
   constructor(address) {
-    this.state = address.state;
     this.city = address.city;
+    this.state = address.state;
+    this.notes = address.notes;
     this.street = address.street;
     this.number = address.number;
     this.details = address.details;
