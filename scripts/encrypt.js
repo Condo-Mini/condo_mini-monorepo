@@ -1,4 +1,5 @@
 const encryptor = require('md5');
+
 const input = process.argv[2];
 
 if (!input) {

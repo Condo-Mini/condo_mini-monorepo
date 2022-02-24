@@ -8,9 +8,9 @@ export default class Route {
   }
 
   getPartialUrl() {
-    const [_entity, ...partial] = this.url.split('/');
+    const [, ...partials] = this.url.split('/');
 
-    return `/${partial.join('/')}`;
+    return `/${partials.join('/')}`;
   }
 
   addValidationMiddleware() {
@@ -26,13 +26,11 @@ export default class Route {
         });
 
         if (error?.details) {
-          validationErrors[location] = error.details.map(
-            ({ message, path, context: { value } }) => ({
-              message,
-              path: path[0],
-              ...(value ? { value } : {}),
-            })
-          );
+          validationErrors[location] = error.details.map(({ message, path, context: { value } }) => ({
+            message,
+            path: path[0],
+            ...(value ? { value } : {}),
+          }));
         }
       });
 
@@ -47,9 +45,6 @@ export default class Route {
   }
 
   addStandardRouteMiddlewares() {
-    return [
-      this.getPartialUrl(),
-      ...(this.validationSchema ? [this.addValidationMiddleware()] : []),
-    ];
+    return [this.getPartialUrl(), ...(this.validationSchema ? [this.addValidationMiddleware()] : [])];
   }
 }

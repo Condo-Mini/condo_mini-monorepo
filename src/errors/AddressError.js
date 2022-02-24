@@ -1,7 +1,7 @@
 import httpStatus from '../constants/httpStatus';
 import BaseError from './BaseError';
 
-export default class UserError extends BaseError {
+export default class AddressError extends BaseError {
   constructor(error) {
     super(error);
 

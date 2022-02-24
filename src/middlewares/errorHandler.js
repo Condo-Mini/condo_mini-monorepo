@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 export default (err, _req, res, _next) => {
   const { error } = err;
 

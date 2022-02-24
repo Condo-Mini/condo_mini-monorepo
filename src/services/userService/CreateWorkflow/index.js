@@ -1,7 +1,7 @@
 import { encrypt } from '../../../helpers/cryptographyHelper';
 import userRoleEnum from '../../../models/user/enums/userRoleEnum';
 import UserModel from '../../../models/user/UserModel';
-import { getPermissionInfoFromUserRole } from '../../userService/commons';
+import { getPermissionInfoFromUserRole } from "../commons";
 import BaseWorkflow from '../../BaseWorkflow';
 import { validateUniqueEmailIndex } from './validators';
 

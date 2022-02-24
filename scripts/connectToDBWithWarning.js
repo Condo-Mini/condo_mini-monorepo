@@ -1,6 +1,6 @@
 import readline from 'readline-sync';
-import loaders from '../src/loaders';
 import express from 'express';
+import loaders from '../src/loaders';
 import config from '../src/config';
 import startServer from '../src/api/server';
 
@@ -31,7 +31,7 @@ if (answer === confirmationMessage) {
     console.log('Watch yourself!');
 
     process.exit(0);
-  } catch (e) {
+  } catch (error) {
     console.error(`Fail to connect with Express!
       ${error.message}`);
 

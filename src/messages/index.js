@@ -19,7 +19,11 @@ const ERROR = {
     NOT_FOUND: 'Could not found a User with the id %s',
   },
   ADDRESS: {
+    ADDRESS_ALREADY_REGISTERED: 'Address is already registered',
     NOT_FOUND_WITH_ZIP_CODE: 'Address with zip code %s not found',
+    STREET_FROM_WRONG_ZIP_CODE:
+      'The given street does not belong to the given zip code',
+    ADDRESS_WITHOUT_STREET: 'Could not save an address without the street',
   },
   REGEX: {
     INVALID_EXPRESSION:
@@ -34,8 +38,17 @@ const templates = {
 export default {
   get: (errorPath, ...args) => {
     const paths = errorPath.split('.');
+
+    if (paths.length !== 3) {
+      throw new Error('Invalid template message path');
+    }
+
     const [messageType, entity, errorMessage] = paths;
     const template = templates[messageType][entity][errorMessage];
+
+    if (!template) {
+      throw new Error('Nonexistent template message');
+    }
 
     const hasPlaceHolders = template.indexOf('%s') !== -1;
 
