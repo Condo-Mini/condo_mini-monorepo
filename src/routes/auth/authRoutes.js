@@ -9,9 +9,6 @@ const loginEndpoint = new Route({
   url: 'auth/login/',
   validationSchema: loginValidationSchema,
 });
-router.post(
-  ...loginEndpoint.addStandardRouteMiddlewares(),
-  authController.login
-);
+router.post(...loginEndpoint.addStandardRouteMiddlewares(), authController.login);
 
 export default router;

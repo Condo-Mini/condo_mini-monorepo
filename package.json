@@ -53,6 +53,8 @@
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
+    "babel-eslint": "^10.1.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "chai-subset": "^1.6.0",
