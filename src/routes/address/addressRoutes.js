@@ -1,6 +1,6 @@
+import express from 'express';
 import { createByZipCodeValidationSchema } from './addressValidationSchemas';
 import addressController from '../../controllers/address/addressController';
-import express from 'express';
 import Route from '../Route';
 
 const router = express.Router();

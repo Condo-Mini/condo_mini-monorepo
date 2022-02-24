@@ -1,6 +1,27 @@
 {
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "env": {
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "prettier"
+  ],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "no-console": "off"
+  },
+  "globals": {
+    "agent": "readonly",
+    "before": "readonly",
+    "after": "readonly",
+    "describe": "readonly",
+    "it": "readonly"
   }
 }

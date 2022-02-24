@@ -2,7 +2,6 @@ import UserError from '../../errors/UserError';
 import UserModel from '../../models/user/UserModel';
 import messages from '../../messages';
 import { userPermissionLevels } from '../../constants/userConstants';
-import httpStatus from '../../constants/httpStatus';
 
 export const findById = async (userId) => UserModel.findById(userId);
 
@@ -34,9 +33,7 @@ export const getPermissionInfoFromUserLevel = (inputLevel) => {
     throw new Error("Param 'level' must be a number.");
   }
 
-  const [role, foundLevel] = Object.entries(userPermissionLevels).find(
-    ([, level]) => level === inputLevel
-  );
+  const [role, foundLevel] = Object.entries(userPermissionLevels).find(([, level]) => level === inputLevel);
 
   return {
     role,

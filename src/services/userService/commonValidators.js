@@ -1,4 +1,3 @@
-import httpStatus from '../../constants/httpStatus';
 import UserError from '../../errors/UserError';
 import { compare } from '../../helpers/cryptographyHelper';
 import messages from '../../messages';

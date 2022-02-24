@@ -7,8 +7,7 @@ import viacepService from '../../external/viacepService';
 import BaseWorkflow from '../../BaseWorkflow';
 
 export default class CreateByZipCodeWorkflow extends BaseWorkflow {
-  _sanitizeZipCode = (zipCode) =>
-    zipCode.replace(sanitizeZipCodeReplacementPattern, '');
+  _sanitizeZipCode = (zipCode) => zipCode.replace(sanitizeZipCodeReplacementPattern, '');
 
   format = (rawInput) => ({
     zipCode: this._sanitizeZipCode(rawInput.zipCode),
@@ -24,15 +23,14 @@ export default class CreateByZipCodeWorkflow extends BaseWorkflow {
     const defaultUpdatableFields = ['notes', 'number'];
 
     const manuallyCreatedFields = Object.entries(addressInfo)
-      .filter(([_key, value]) => !value)
-      .map(([key, _value]) => key);
+      .filter(([, value]) => !value)
+      .map(([key]) => key);
 
     return [...defaultUpdatableFields, ...manuallyCreatedFields];
   };
 
   process = async (input) => {
     const { loggedUser, street, number, zipCode, notes } = input;
-    const defaultUpdatableFields = ['notes', 'number'];
 
     const addressInfo = await viacepService.workflows.getByZipCode({
       zipCode,
