@@ -1,5 +1,5 @@
 import { validateExpressionPatternPolicy } from '../../helpers/regExHelper';
-import { zipCodePattern } from '../../constants/addressContants';
+import { zipCodePattern, statePattern } from '../../constants/addressContants';
 import userRoleEnum from '../../models/user/enums/userRoleEnum';
 import addressService from '../../services/addressService';
 import httpStatus from '../../constants/httpStatus';
@@ -32,5 +32,31 @@ addressController.createByZipCode = new Controller()
     },
     { successStatusCode: httpStatus.CREATED, DTOClass: AddressDTO }
   );
+
+  addressController.createByAddress = new Controller()
+    .addStandardMiddlewares((req) => {
+      req.permissionRole = userRoleEnum.GUARD;
+    })
+    .addPre((req) => {
+      const { 
+        body: { zipCode, state }, 
+      } = req;
+      
+     validateExpressionPatternPolicy(zipCode, zipCodePattern);
+     validateExpressionPatternPolicy(state, statePattern);
+    })
+    .setEndpoint(
+      async(req) => {
+        const {loggedUser, body } = req;
+
+        const addressInfo = await addressService.workflows.createByAddress({
+          loggedUser,
+          ...body,
+        });
+        
+        return addressInfo;
+      },
+      { successStatusCode: httpStatus.CREATED, DTOClass: AddressDTO }
+    );
 
 export default addressController;

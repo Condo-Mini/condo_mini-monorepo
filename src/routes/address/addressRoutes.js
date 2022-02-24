@@ -1,5 +1,5 @@
 import express from 'express';
-import { createByZipCodeValidationSchema } from './addressValidationSchemas';
+import { createByZipCodeValidationSchema, createAddressValidationSchema } from './addressValidationSchemas';
 import addressController from '../../controllers/address/addressController';
 import Route from '../Route';
 
@@ -13,5 +13,13 @@ router.post(
   ...createByZipCodeEndpoint.addStandardRouteMiddlewares(),
   addressController.createByZipCode
 );
+
+const createAddressEndpoint = new Route({
+  url: 'address/',
+  validationSchema: createAddressValidationSchema,
+});
+router.post(
+  ...createAddressEndpoint.addStandardRouteMiddlewares(),
+)
 
 export default router;
