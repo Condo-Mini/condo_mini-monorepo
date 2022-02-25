@@ -33,7 +33,7 @@ addressController.createByZipCode = new Controller()
     { successStatusCode: httpStatus.CREATED, DTOClass: AddressDTO }
   );
 
-  addressController.createByAddress = new Controller()
+  addressController.create = new Controller()
     .addStandardMiddlewares((req) => {
       req.permissionRole = userRoleEnum.GUARD;
     })
@@ -41,7 +41,7 @@ addressController.createByZipCode = new Controller()
       async(req) => {
         const {loggedUser, body } = req;
 
-        const addressInfo = await addressService.workflows.createByAddress({
+        const addressInfo = await addressService.workflows.create({
           loggedUser,
           ...body,
         });
