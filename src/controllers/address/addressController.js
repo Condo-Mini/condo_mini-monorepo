@@ -1,5 +1,5 @@
 import { validateExpressionPatternPolicy } from '../../helpers/regExHelper';
-import { zipCodePattern, statePattern } from '../../constants/addressContants';
+import { zipCodePattern } from '../../constants/addressContants';
 import userRoleEnum from '../../models/user/enums/userRoleEnum';
 import addressService from '../../services/addressService';
 import httpStatus from '../../constants/httpStatus';
