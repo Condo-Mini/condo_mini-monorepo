@@ -24,4 +24,22 @@ addressController.createByZipCode = new Controller()
     { successStatusCode: httpStatus.CREATED, DTOClass: AddressDTO }
   );
 
+  addressController.create = new Controller()
+    .addStandardMiddlewares((req) => {
+      req.permissionRole = userRoleEnum.GUARD;
+    })
+    .setEndpoint(
+      async(req) => {
+        const {loggedUser, body } = req;
+
+        const addressInfo = await addressService.workflows.create({
+          loggedUser,
+          ...body,
+        });
+        
+        return addressInfo;
+      },
+      { successStatusCode: httpStatus.CREATED, DTOClass: AddressDTO }
+    );
+
 export default addressController;
