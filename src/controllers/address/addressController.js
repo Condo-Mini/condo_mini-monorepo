@@ -49,7 +49,7 @@ addressController.createByZipCode = new Controller()
       async(req) => {
         const {loggedUser, body } = req;
 
-        const addressInfo = await addressService.workflows.createByAddress({
+        const addressInfo = await addressService.workflows.create({
           loggedUser,
           ...body,
         });
