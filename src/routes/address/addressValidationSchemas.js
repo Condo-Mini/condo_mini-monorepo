@@ -5,7 +5,7 @@ export const createByZipCodeValidationSchema = {
   body: Joi.object({
     street: Joi.string(),
     number: Joi.string().required(),
-    zipCode: Joi.string().required(),
+    zipCode: Joi.string().regex(zipCodePattern).required(),
     notes: Joi.string(),
   }),
 };
