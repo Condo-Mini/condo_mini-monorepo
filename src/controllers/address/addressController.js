@@ -33,7 +33,7 @@ addressController.createByZipCode = new Controller()
     { successStatusCode: httpStatus.CREATED, DTOClass: AddressDTO }
   );
 
-  addressController.createByAddress = new Controller()
+  addressController.create = new Controller()
     .addStandardMiddlewares((req) => {
       req.permissionRole = userRoleEnum.GUARD;
     })
