@@ -11,7 +11,7 @@ export const createByZipCodeValidationSchema = {
 
 export const createAddressValidationSchema = {
   body: Joi.object({
-    state: Joi.string.required(), 
+    state: Joi.string().required(), 
     city: Joi.string().required(),   
     number: Joi.string().required(),    
     zipCode: Joi.string.required(), 
