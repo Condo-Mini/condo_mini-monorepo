@@ -37,14 +37,6 @@ addressController.createByZipCode = new Controller()
     .addStandardMiddlewares((req) => {
       req.permissionRole = userRoleEnum.GUARD;
     })
-    .addPre((req) => {
-      const { 
-        body: { zipCode, state }, 
-      } = req;
-      
-     validateExpressionPatternPolicy(zipCode, zipCodePattern);
-     validateExpressionPatternPolicy(state, statePattern);
-    })
     .setEndpoint(
       async(req) => {
         const {loggedUser, body } = req;

@@ -20,6 +20,7 @@ const createAddressEndpoint = new Route({
 });
 router.post(
   ...createAddressEndpoint.addStandardRouteMiddlewares(),
-)
+  addressController.create
+);
 
 export default router;
