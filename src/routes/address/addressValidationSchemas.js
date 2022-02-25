@@ -15,7 +15,7 @@ export const createAddressValidationSchema = {
     state: Joi.string().regex(statePattern).required(), 
     city: Joi.string().required(), 
     number: Joi.string().required(),  
-    zipCode: Joi.string.regex(zipCodePattern).required(),
+    zipCode: Joi.string().regex(zipCodePattern).required(),
     areaCode: Joi.string().required(),
     details: Joi.string(),
     notes: Joi.string(),
