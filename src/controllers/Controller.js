@@ -14,11 +14,11 @@ export default class Controller {
 
   _endpoint() {}
 
-  _build = () => {
+  _build() {
     const pipeline = [...this._preMiddlewares, this._endpoint];
 
     return pipeline.map(rescue);
-  };
+  }
 
   addPre(middleware) {
     this._preMiddlewares.push(async (req, res, next) => {
