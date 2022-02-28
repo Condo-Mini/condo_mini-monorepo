@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import * as validators from './validators';
 
-const customJoi = Object.entries(validators).reduce(
+export default Object.entries(validators).reduce(
   (acc, [type, isValid]) =>
     acc.extend({
       type,
@@ -12,5 +12,3 @@ const customJoi = Object.entries(validators).reduce(
     }),
   Joi
 );
-
-export default customJoi;
