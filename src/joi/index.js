@@ -1,12 +1,12 @@
 import Joi from 'joi';
 import * as validators from './validators';
 
-const customJoi = Object.values(validators).reduce(
-  (acc, { type, errorMessage = 'Invalid value', isValid }) =>
+const customJoi = Object.entries(validators).reduce(
+  (acc, [type, isValid]) =>
     acc.extend({
       type,
       messages: {
-        invalid: errorMessage,
+        invalid: `Invalid ${type}`,
       },
       validate: (value, { error }) => !isValid(value) && { value, errors: error('invalid') },
     }),
