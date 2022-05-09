@@ -17,7 +17,7 @@ export default class Route {
     return rescue((req, _res, next) => {
       const validationErrors = {};
 
-      Object.entries(this.validationSchema).forEach(([location, schema]) => {
+      Object.entries(this.validationSchema || []).forEach(([location, schema]) => {
         if (!req[location]) {
           throw new Error(`Invalid schema location: ${location}`);
         }

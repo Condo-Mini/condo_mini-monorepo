@@ -5,6 +5,7 @@
   "main": "./src/api/index.js",
   "scripts": {
     "api:start": "node -r @babel/register -r regenerator-runtime/runtime .",
+    "api:start:ts": "node -r @babel/register -r regenerator-runtime/runtime dist/src/api/index.js",
     "api:start:dev": "NODE_ENV=dev nodemon -r @babel/register -r regenerator-runtime/runtime .",
     "api:start:prod": "NODE_ENV=prod node -r @babel/register -r regenerator-runtime/runtime './scripts/connectToDBWithWarning.js'",
     "api:start:script": "NODE_ENV=prod node -r @babel/register -r regenerator-runtime/runtime './scripts/script.js'",
