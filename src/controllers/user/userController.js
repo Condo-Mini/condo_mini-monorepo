@@ -3,7 +3,6 @@ import userService from '../../services/userService';
 import httpStatus from '../../constants/httpStatus';
 import UserDTO from './DTOs/UserDTO';
 import userRoleEnum from '../../models/user/enums/userRoleEnum';
-import User from '../../core/entities/user/User';
 
 const userController = {};
 
@@ -44,15 +43,5 @@ userController.getById = new Controller()
     },
     { successStatusCode: httpStatus.OK, DTOClass: UserDTO }
   );
-
-userController.getTsUser = new Controller().setEndpoint(async () => {
-  const user = new User({
-    name: 'Matheus',
-    lastName: 'Martino',
-    age: 25,
-  });
-
-  return user.getFullName();
-});
 
 export default userController;

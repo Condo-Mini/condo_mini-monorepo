@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "./src/api/index.js",
   "scripts": {
+    "api:build:dist": "tsc",
     "api:start": "node -r @babel/register -r regenerator-runtime/runtime .",
     "api:start:ts": "node -r @babel/register -r regenerator-runtime/runtime dist/src/api/index.js",
     "api:start:dev": "NODE_ENV=dev nodemon -r @babel/register -r regenerator-runtime/runtime .",
@@ -51,7 +52,8 @@
     "mongodb": "^4.2.2",
     "mongoose": "^6.1.4",
     "readline-sync": "^1.4.10",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "typescript": "^4.6.4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
