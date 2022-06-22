@@ -1,6 +1,7 @@
 const encryptor = require('md5');
 
-const input = process.argv[2];
+const args = process.argv;
+const input = args[2];
 
 if (!input) {
   console.log('No input was found to encrypt.');

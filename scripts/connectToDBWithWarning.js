@@ -29,8 +29,6 @@ if (answer === confirmationMessage) {
 
     console.log(`HTTP Server listening on port: ${port}`);
     console.log('Watch yourself!');
-
-    process.exit(0);
   } catch (error) {
     console.error(`Fail to connect with Express!
       ${error.message}`);

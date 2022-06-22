@@ -17,9 +17,4 @@ const getUserEndPoint = new Route({
 });
 router.get(...getUserEndPoint.addStandardRouteMiddlewares(), userController.getById);
 
-const getTsUser = new Route({
-  url: 'user/',
-});
-router.get(...getTsUser.addStandardRouteMiddlewares(), userController.getTsUser);
-
 export default router;
