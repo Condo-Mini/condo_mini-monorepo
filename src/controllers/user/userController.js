@@ -45,7 +45,7 @@ userController.getById = new Controller()
     { successStatusCode: httpStatus.OK, DTOClass: UserDTO }
   );
 
-userController.publicList = new Controller().setEndpoint(
+userController.list = new Controller().setEndpoint(
   async () => {
     const users = await UserModel.find().limit(20);
 
