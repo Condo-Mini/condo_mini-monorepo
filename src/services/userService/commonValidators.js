@@ -1,31 +1,20 @@
-import md5 from 'md5';
-import httpStatus from '../../constants/httpStatus';
 import UserError from '../../errors/UserError';
+import { compare } from '../../helpers/cryptographyHelper';
 import messages from '../../messages';
 import UserModel from '../../models/user/UserModel';
 
-export const validateIfEmailIsRegistered = async (email) => {
-  const isEmailRegistered = await UserModel.existsWith({
-    'profile.email': email,
-  });
-
-  if (!isEmailRegistered) {
-    throw new UserError({
-      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
-      message: messages.ERROR.USER.EMAIL_IS_NOT_REGISTERED,
-    });
-  }
-};
-
 export const validateEmailAndPassword = async ({ email, password }) => {
-  await validateIfEmailIsRegistered(email);
-
   const user = await UserModel.findWith({ 'profile.email': email });
 
-  if (user.profile.password !== md5(password)) {
+  if (!user) {
     throw new UserError({
-      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
-      message: messages.ERROR.USER.INVALID_PASSWORD,
+      message: messages.get('ERROR.USER.EMAIL_IS_NOT_REGISTERED'),
+    });
+  }
+
+  if (!compare(password, user.profile.password)) {
+    throw new UserError({
+      message: messages.get('ERROR.USER.INVALID_PASSWORD'),
     });
   }
 };

@@ -1,11 +1,15 @@
 # Dependency directories
 node_modules/
+dist
 
 # dotenv environment variables file
 .env
 .env.test
 .env.staging
 .env.prod
+
+scripts/sandbox.js
+.vscode
 
 coverage/
 .nyc_output

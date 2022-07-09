@@ -3,12 +3,21 @@ import UserModel from '../../models/user/UserModel';
 import AuthError from '../../errors/AuthError';
 import httpStatus from '../../constants/httpStatus';
 import messages from '../../messages';
+import config from '../../config';
+import timeConstants from '../../constants/timeConstants';
+
+export const sign = ({ jwtPayload, expiration: expirationInSeconds = 30 * timeConstants.SECONDS_PER_MINUTE }) => {
+  const { jwtSecret } = config;
+  const jwtConfig = { algorithm: 'HS256', expiresIn: expirationInSeconds };
+
+  return jwt.sign(jwtPayload, jwtSecret, jwtConfig);
+};
 
 export const verifyTokenAndExtractUser = async ({ jwtToken, jwtSecret }) => {
   if (!jwtToken) {
     throw new AuthError({
       statusCode: httpStatus.UNAUTHORIZED,
-      message: messages.ERROR.AUTH.AUTH_HEADER_IS_MISSING,
+      message: messages.get('ERROR.AUTH.AUTH_HEADER_IS_MISSING'),
     });
   }
 

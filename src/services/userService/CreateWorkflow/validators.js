@@ -1,7 +1,6 @@
-import httpStatus from '../../../constants/httpStatus';
+import UserModel from '../../../models/user/UserModel';
 import UserError from '../../../errors/UserError';
 import messages from '../../../messages';
-import UserModel from '../../../models/user/UserModel';
 
 export const validateUniqueEmailIndex = async (email) => {
   const isEmailAlreadyRegistered = await UserModel.existsWith({
@@ -10,8 +9,7 @@ export const validateUniqueEmailIndex = async (email) => {
 
   if (isEmailAlreadyRegistered) {
     throw new UserError({
-      statusCode: httpStatus.UNPROCESSABLE_ENTITY,
-      message: messages.ERROR.USER.EMAIL_ALREADY_REGISTERED,
+      message: messages.get('ERROR.USER.EMAIL_ALREADY_REGISTERED'),
     });
   }
 };

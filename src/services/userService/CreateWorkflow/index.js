@@ -1,7 +1,7 @@
-import md5 from 'md5';
-import { userPermissionLevels } from '../../../constants/userConstants';
+import { encrypt } from '../../../helpers/cryptographyHelper';
 import userRoleEnum from '../../../models/user/enums/userRoleEnum';
 import UserModel from '../../../models/user/UserModel';
+import { getPermissionInfoFromUserRole } from "../commons";
 import BaseWorkflow from '../../BaseWorkflow';
 import { validateUniqueEmailIndex } from './validators';
 
@@ -29,10 +29,9 @@ export default class CreateWorkflow extends BaseWorkflow {
       lastName,
       profile: {
         email,
-        password: md5(password),
+        password: encrypt(password),
         permission: {
-          role,
-          level: userPermissionLevels[role],
+          ...getPermissionInfoFromUserRole(role),
         },
       },
       createdBy: loggedUser.id,

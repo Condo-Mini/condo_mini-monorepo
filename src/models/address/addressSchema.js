@@ -1,11 +1,8 @@
 import { Schema } from 'mongoose';
 import auditSchema from '../schemas/auditSchema';
+import addressCreationTypeEnum from './enums/addressCreationTypeEnum';
 
 export default new Schema({
-  country: {
-    type: String,
-    required: true,
-  },
   state: {
     type: String,
     required: true,
@@ -25,6 +22,25 @@ export default new Schema({
   zipCode: {
     type: String,
     required: true,
+  },
+  areaCode: {
+    type: String,
+    required: true,
+  },
+  details: {
+    type: String,
+  },
+  notes: {
+    type: String,
+  },
+  updatableFields: {
+    type: Array,
+    required: true,
+  },
+  creationType: {
+    type: String,
+    required: true,
+    enum: Object.values(addressCreationTypeEnum),
   },
   ...auditSchema,
 });

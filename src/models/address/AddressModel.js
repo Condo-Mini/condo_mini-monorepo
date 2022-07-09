@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import Database from '../../database';
-import schema from '../schemas/addressSchema';
+import schema from './addressSchema';
 
 const addressSchema = Database.configSchema({
   schema,
@@ -11,5 +11,7 @@ const addressSchema = Database.configSchema({
     id: true,
   },
 });
+
+addressSchema.index({ street: 1, number: 1, zipCode: 1 }, { unique: true });
 
 export default mongoose.model('address', addressSchema);

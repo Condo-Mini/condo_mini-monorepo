@@ -1,7 +1,7 @@
-import healthCheck from './healthCheck';
-import authRoutes from './authRoutes';
-import addressRoutes from './addressRoutes';
-import userRoutes from './userRoutes';
+import healthCheck from './health/healthCheck';
+import authRoutes from './auth/authRoutes';
+import addressRoutes from './address/addressRoutes';
+import userRoutes from './user/userRoutes';
 
 export default {
   healthCheck,
