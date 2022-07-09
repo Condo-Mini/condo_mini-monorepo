@@ -20,7 +20,6 @@ router.get(...getUserEndpoint.addStandardRouteMiddlewares(), userController.getB
 const listUsersEndpoint = new Route({
   url: 'user/',
 });
-
 router.get(...listUsersEndpoint.addStandardRouteMiddlewares(), userController.list);
 
 export default router;
