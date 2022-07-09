@@ -2,7 +2,7 @@
   "name": "condo_mini-api",
   "description": "A condominium management app.",
   "version": "1.0.0",
-  "main": "./src/api/index.js",
+  "main": "src/api/index.js",
   "scripts": {
     "api:build:dist": "tsc",
     "api:start": "node -r @babel/register -r regenerator-runtime/runtime .",
