@@ -42,9 +42,14 @@ export default class Controller {
 
     this._endpoint = async (req, res) => {
       const endpointReturn = await endpoint(req, res);
-      const response = DTOClass ? new DTOClass(endpointReturn) : endpointReturn;
 
-      return res.status(successStatusCode).json(response);
+      if (Array.isArray(endpointReturn)) {
+        const arrayWithDTO = endpointReturn.map((item) => new DTOClass(item));
+
+        return res.status(successStatusCode).json(arrayWithDTO);
+      }
+
+      return res.status(successStatusCode).json(new DTOClass(endpointReturn));
     };
 
     return this._build();

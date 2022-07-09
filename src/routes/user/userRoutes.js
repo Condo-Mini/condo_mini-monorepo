@@ -11,10 +11,15 @@ const createUserEndpoint = new Route({
 });
 router.post(...createUserEndpoint.addStandardRouteMiddlewares(), userController.create);
 
-const getUserEndPoint = new Route({
+const getUserEndpoint = new Route({
   url: 'user/:id',
   validationSchema: getUserValidationSchema,
 });
-router.get(...getUserEndPoint.addStandardRouteMiddlewares(), userController.getById);
+router.get(...getUserEndpoint.addStandardRouteMiddlewares(), userController.getById);
+
+const publicListUsersEndpoint = new Route({
+  url: 'user/',
+});
+router.get(...publicListUsersEndpoint.addStandardRouteMiddlewares(), userController.publicList);
 
 export default router;
