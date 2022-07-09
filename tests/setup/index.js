@@ -16,7 +16,7 @@ const setUpChai = () => {
 
 const setUpApp = async () => {
   const app = express();
-  const port = process.env.API_PORT;
+  const port = process.env.PORT;
 
   loaders.express.init(app);
 
@@ -36,14 +36,10 @@ before('Init', async () => {
   config.dbName = dbName;
   await loaders.mongoose.init(dbName);
 
-  const modelCollectionArray = await mongoose.connection.db
-    .listCollections()
-    .toArray();
+  const modelCollectionArray = await mongoose.connection.db.listCollections().toArray();
 
   await Promise.all(
-    modelCollectionArray.map(async (collection) =>
-      mongoose.connection.db.collection(collection.name).deleteMany()
-    )
+    modelCollectionArray.map(async (collection) => mongoose.connection.db.collection(collection.name).deleteMany())
   );
 
   setUpChai();
@@ -51,13 +47,9 @@ before('Init', async () => {
 });
 
 after('Finish', async () => {
-  const modelCollectionArray = await mongoose.connection.db
-    .listCollections()
-    .toArray();
+  const modelCollectionArray = await mongoose.connection.db.listCollections().toArray();
 
   await Promise.all(
-    modelCollectionArray.map(async (collection) =>
-      mongoose.connection.db.collection(collection.name).deleteMany()
-    )
+    modelCollectionArray.map(async (collection) => mongoose.connection.db.collection(collection.name).deleteMany())
   );
 });

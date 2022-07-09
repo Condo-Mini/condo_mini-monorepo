@@ -7,20 +7,10 @@ dotenv.config({
     : path.resolve(process.cwd(), '.env'),
 });
 
-const {
-  API_PORT,
-  DB_PORT,
-  NODE_ENV,
-  DB_HOST,
-  DB_NAME,
-  DB_ATLAS,
-  DB_USER,
-  DB_PASSWORD,
-  JWT_SECRET,
-} = process.env;
+const { PORT, DB_PORT, NODE_ENV, DB_HOST, DB_NAME, DB_ATLAS, DB_USER, DB_PASSWORD, JWT_SECRET } = process.env;
 
 export default {
-  apiPort: API_PORT,
+  apiPort: PORT,
   dbPort: DB_PORT,
   nodeEnv: NODE_ENV,
   dbHost: DB_HOST,
