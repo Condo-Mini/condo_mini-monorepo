@@ -11,12 +11,12 @@ const { PORT, DB_PORT, NODE_ENV, DB_HOST, DB_NAME, DB_ATLAS, DB_USER, DB_PASSWOR
 
 export default {
   apiPort: PORT,
-  dbPort: DB_PORT,
-  nodeEnv: NODE_ENV,
+  dbAtlas: DB_ATLAS,
   dbHost: DB_HOST,
   dbName: DB_NAME,
-  dbAtlas: DB_ATLAS,
-  dbUser: DB_USER,
   dbPassword: DB_PASSWORD,
+  dbPort: DB_PORT,
+  dbUser: DB_USER,
   jwtSecret: JWT_SECRET,
+  nodeEnv: NODE_ENV,
 };
