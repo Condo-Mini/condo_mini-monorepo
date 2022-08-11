@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 
 dotenv.config({
-  path: ['prod', 'staging', 'test'].includes(process.env.NODE_ENV)
+  path: ['production', 'staging', 'test'].includes(process.env.NODE_ENV)
     ? path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`)
     : path.resolve(process.cwd(), '.env'),
 });
