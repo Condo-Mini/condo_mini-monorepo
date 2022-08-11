@@ -14,6 +14,8 @@ app.use('/auth', authRoutes);
 app.use('/address', addressRoutes);
 app.use('/user', userRoutes);
 
+app.get('/', (_, res) => res.json('Welcome to the Condomini API!'));
+
 app.use(errorHandler);
 
 export default app;
