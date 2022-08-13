@@ -1,5 +1,5 @@
 {
-  "name": "condo_mini-api",
+  "name": "@condomini/api",
   "description": "A condominium management app.",
   "version": "1.0.0",
   "main": "src/main.js",
@@ -63,10 +63,14 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "faker": "^5.5.3",
+    "lerna": "^5.4.1",
     "migrate-mongo": "^8.2.3",
     "mocha": "^9.2.0",
     "nodemon": "^2.0.15",
     "nyc": "15.1.0",
     "prettier": "^2.5.1"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

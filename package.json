@@ -1,9 +1,10 @@
 {
-  "name": "condo_mini-monorepo",
+  "name": "condomini",
   "author": "Matheus Martino do Amaral",
   "description": "A condominium management app.",
   "version": "1.0.0",
   "license": "ISC",
+  "private": true,
   "engines": {
     "node": "16.14.2"
   },
@@ -19,10 +20,19 @@
     "packages/api",
     "packages/geolocation"
   ],
-  "scripts": {},
-  "dependencies": {},
+  "scripts": {
+    "api:start:dev": "lerna run start --scope=@condomini/api",
+    "build": "lerna run build",
+    "version:new": "lerna version --conventional-commits --yes"
+  },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "lerna": "^5.4.1",
     "nx": "^14.5.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

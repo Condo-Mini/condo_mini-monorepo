@@ -1,11 +1,11 @@
 {
-  "name": "geolocation",
+  "name": "@condomini/geolocation",
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/main.js",
   "type": "module",
   "scripts": {
-    "start": "node dist/main.js",
+    "start": "node dist/src/main.js",
     "start:ts": "ts-node src/main.ts",
     "build": "tsc --build --verbose"
   },
