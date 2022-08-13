@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "main": "src/main.js",
   "type": "module",
-  "engines": {
-    "node": "16.14.2"
-  },
   "scripts": {
     "start": "node .",
     "start:dev": "NODE_ENV=dev nodemon .",

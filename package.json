@@ -4,6 +4,9 @@
   "description": "A condominium management app.",
   "version": "1.0.0",
   "license": "ISC",
+  "engines": {
+    "node": "16.14.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Condo-Mini/condo_mini-api.git"
