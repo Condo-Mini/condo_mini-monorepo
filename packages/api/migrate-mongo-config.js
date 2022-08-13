@@ -21,6 +21,7 @@ const config = {
   migrationsDir: 'migrations',
   changelogCollectionName: 'changelog',
   migrationFileExtension: '.js',
+  moduleSystem: 'esm',
 };
 
 module.exports = config;
