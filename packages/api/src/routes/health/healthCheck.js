@@ -1,13 +1,18 @@
 import express from 'express';
-import defaultController from '../../controllers/default/defaultController.js';
 import Route from '../Route.js';
-import myFunction from 'geolocation';
+import geolocation from 'geolocation';
 
 const router = express.Router();
 
 const healthCheckEndpoint = new Route({
   url: 'health/check',
 });
-router.get(...healthCheckEndpoint.addStandardRouteMiddlewares(), defaultController.notImplemented);
+router.get(...healthCheckEndpoint.addStandardRouteMiddlewares(), (_, res) => {
+  res.json({
+    healthChecks: {
+      geolocation: geolocation.healthCheck(),
+    },
+  });
+});
 
 export default router;

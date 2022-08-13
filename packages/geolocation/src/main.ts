@@ -1,5 +1,5 @@
-const myFunction = (word: string): void => {
-  console.log('hiuhiouhui');
+export default {
+  healthCheck(): string {
+    return 'I am @condomini/geolocation';
+  },
 };
-
-export default myFunction;
