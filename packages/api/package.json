@@ -72,8 +72,5 @@
     "nodemon": "^2.0.15",
     "nyc": "15.1.0",
     "prettier": "^2.5.1"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }
