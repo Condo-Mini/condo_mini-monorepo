@@ -1,5 +1,3 @@
-const myFunction = (word: string): void => {
-  console.log('hiuhiouhui');
-};
+const myFunction = (): string => 'uioiuioiuio';
 
 export default myFunction;
