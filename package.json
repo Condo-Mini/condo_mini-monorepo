@@ -23,7 +23,8 @@
   "scripts": {
     "api:start:dev": "lerna run start --scope=@condomini/api",
     "build": "lerna run build",
-    "version:new": "lerna version --conventional-commits --yes"
+    "version:new": "lerna version --conventional-commits --yes",
+    "deploy:production": "git push condomini-api@production master:main"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
