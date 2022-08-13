@@ -1,1 +1,1 @@
-web: node -r @babel/register -r regenerator-runtime/runtime src/api/index.js
+web: node packages/api/src/main.js
