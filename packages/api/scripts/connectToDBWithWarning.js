@@ -1,7 +1,7 @@
 import readline from 'readline-sync';
 import express from 'express';
-import loaders from '../src/loaders';
-import config from '../src/config';
+import loaders from '../packages/api/src/loaders';
+import config from '../packages/api/src/config';
 import startServer from '../src/api/server';
 
 if (!config.dbName) {

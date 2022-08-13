@@ -1,6 +1,7 @@
 import express from 'express';
 import defaultController from '../../controllers/default/defaultController.js';
 import Route from '../Route.js';
+import myFunction from 'geolocation';
 
 const router = express.Router();
 
