@@ -5,7 +5,7 @@ import chai from 'chai';
 import express from 'express';
 import loaders from '../../src/loaders';
 import config from '../../src/config';
-import startServer from '../../src/api/server';
+import startServer from '../../src/resources/server';
 import { ensureEnvironment } from '../../src/helpers/databaseHelper';
 
 const setUpChai = () => {

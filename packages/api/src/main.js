@@ -1,6 +1,6 @@
-import startServer from './server';
-import app from './app';
-import config from '../config';
+import startServer from './resources/server';
+import app from './resources/app';
+import config from './config';
 
 const port = config.apiPort || 3000;
 
