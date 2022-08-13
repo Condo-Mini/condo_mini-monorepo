@@ -1,3 +1,5 @@
-const myFunction = (): string => 'uioiuioiuio';
-
-export default myFunction;
+export default {
+  healthCheck(): string {
+    return 'I am @condomini/geolocation';
+  },
+};
