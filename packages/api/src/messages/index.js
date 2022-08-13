@@ -1,4 +1,4 @@
-import { interpolateTemplateStringWithArgs } from '../helpers/stringHelper';
+import { interpolateTemplateStringWithArgs } from '../helpers/stringHelper.js';
 
 const ERROR = {
   VALIDATION: {
@@ -7,10 +7,8 @@ const ERROR = {
   AUTH: {
     INVALID_EMAIL_OR_PASSWORD: 'Invalid email or password',
     AUTH_HEADER_IS_MISSING: 'Authentication header is missing',
-    FORBIDDEN_ENDPOINT:
-      'Logged user must have %s authorization level or higher to use this endpoint',
-    FORBIDDEN_HIERARCHY:
-      'Logged user can only modify users with authorization level lower than or equal to %s',
+    FORBIDDEN_ENDPOINT: 'Logged user must have %s authorization level or higher to use this endpoint',
+    FORBIDDEN_HIERARCHY: 'Logged user can only modify users with authorization level lower than or equal to %s',
   },
   USER: {
     EMAIL_ALREADY_REGISTERED: 'Email is already registered',
@@ -21,13 +19,11 @@ const ERROR = {
   ADDRESS: {
     ADDRESS_ALREADY_REGISTERED: 'Address is already registered',
     NOT_FOUND_WITH_ZIP_CODE: 'Address with zip code %s not found',
-    STREET_FROM_WRONG_ZIP_CODE:
-      'The given street does not belong to the given zip code',
+    STREET_FROM_WRONG_ZIP_CODE: 'The given street does not belong to the given zip code',
     ADDRESS_WITHOUT_STREET: 'Could not save an address without the street',
   },
   REGEX: {
-    INVALID_EXPRESSION:
-      'Expression %s does not match with the pattern policy %s',
+    INVALID_EXPRESSION: 'Expression %s does not match with the pattern policy %s',
   },
 };
 
@@ -52,8 +48,6 @@ export default {
 
     const hasPlaceHolders = template.indexOf('%s') !== -1;
 
-    return hasPlaceHolders
-      ? interpolateTemplateStringWithArgs(template, ...args)
-      : template;
+    return hasPlaceHolders ? interpolateTemplateStringWithArgs(template, ...args) : template;
   },
 };

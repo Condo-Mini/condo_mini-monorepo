@@ -1,7 +1,7 @@
-import httpStatus from '../../../constants/httpStatus';
-import AuthError from '../../../errors/AuthError';
-import messages from '../../../messages';
-import userService from '../../userService';
+import httpStatus from '../../../constants/httpStatus.js';
+import AuthError from '../../../errors/AuthError.js';
+import messages from '../../../messages/index.js';
+import userService from '../../userService/index.js';
 
 export const validateLogin = async ({ email, password }) => {
   try {

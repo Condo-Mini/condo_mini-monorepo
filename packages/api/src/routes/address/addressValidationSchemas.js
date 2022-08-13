@@ -1,4 +1,4 @@
-import Joi from '../../joi';
+import Joi from '../../joi/index.js';
 
 export const createByZipCodeValidationSchema = {
   body: Joi.object({

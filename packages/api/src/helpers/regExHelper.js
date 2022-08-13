@@ -1,4 +1,4 @@
-import RegExError from '../errors/RegExError';
+import RegExError from '../errors/RegExError.js';
 
 export const validateExpressionPatternPolicy = (expression, pattern) => {
   const isExpressionValid = pattern.test(expression);

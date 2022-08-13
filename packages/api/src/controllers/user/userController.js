@@ -1,9 +1,9 @@
-import Controller from '../Controller';
-import userService from '../../services/userService';
-import httpStatus from '../../constants/httpStatus';
-import UserDTO from './DTOs/UserDTO';
-import userRoleEnum from '../../models/user/enums/userRoleEnum';
-import UserModel from '../../models/user/UserModel';
+import Controller from '../Controller.js';
+import userService from '../../services/userService/index.js';
+import httpStatus from '../../constants/httpStatus.js';
+import UserDTO from './DTOs/UserDTO.js';
+import userRoleEnum from '../../models/user/enums/userRoleEnum.js';
+import UserModel from '../../models/user/UserModel.js';
 
 const userController = {};
 

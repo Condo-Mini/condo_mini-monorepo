@@ -1,5 +1,5 @@
-import Joi from '../../joi';
-import userRoleEnum from '../../models/user/enums/userRoleEnum';
+import Joi from '../../joi/index.js';
+import userRoleEnum from '../../models/user/enums/userRoleEnum.js';
 
 export const createUserValidationSchema = {
   body: Joi.object({

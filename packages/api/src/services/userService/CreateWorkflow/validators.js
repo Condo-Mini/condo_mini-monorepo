@@ -1,6 +1,6 @@
-import UserModel from '../../../models/user/UserModel';
-import UserError from '../../../errors/UserError';
-import messages from '../../../messages';
+import UserModel from '../../../models/user/UserModel.js';
+import UserError from '../../../errors/UserError.js';
+import messages from '../../../messages/index.js';
 
 export const validateUniqueEmailIndex = async (email) => {
   const isEmailAlreadyRegistered = await UserModel.existsWith({

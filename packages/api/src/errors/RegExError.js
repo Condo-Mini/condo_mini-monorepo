@@ -1,6 +1,6 @@
-import BaseError from './BaseError';
-import messages from '../messages';
-import httpStatus from '../constants/httpStatus';
+import BaseError from './BaseError.js';
+import messages from '../messages/index.js';
+import httpStatus from '../constants/httpStatus.js';
 
 export default class RegExError extends BaseError {
   constructor(error) {
@@ -8,11 +8,7 @@ export default class RegExError extends BaseError {
 
     this.error = {
       statusCode: httpStatus.UNPROCESSABLE_ENTITY,
-      message: messages.get(
-        'ERROR.REGEX.INVALID_EXPRESSION',
-        error.expression,
-        error.pattern
-      ),
+      message: messages.get('ERROR.REGEX.INVALID_EXPRESSION', error.expression, error.pattern),
     };
   }
 }

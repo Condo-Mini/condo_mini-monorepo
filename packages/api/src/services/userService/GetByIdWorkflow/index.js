@@ -1,5 +1,5 @@
-import BaseWorkflow from '../../BaseWorkflow';
-import { findByIdAndValidateIfExists } from '../commons';
+import BaseWorkflow from '../../BaseWorkflow.js';
+import { findByIdAndValidateIfExists } from '../commons.js';
 
 export default class GetByIdWorkflow extends BaseWorkflow {
   format = (rawInput) => ({
@@ -11,6 +11,6 @@ export default class GetByIdWorkflow extends BaseWorkflow {
   process = async (input) => {
     const { userId } = input;
 
-    return findByIdAndValidateIfExists(userId)
+    return findByIdAndValidateIfExists(userId);
   };
 }

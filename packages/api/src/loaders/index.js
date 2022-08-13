@@ -1,5 +1,5 @@
-import express from './express';
-import mongoose from './mongoose';
+import express from './express.js';
+import mongoose from './mongoose.js';
 
 export default {
   express,

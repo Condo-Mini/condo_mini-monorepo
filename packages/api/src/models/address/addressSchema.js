@@ -1,6 +1,8 @@
-import { Schema } from 'mongoose';
-import auditSchema from '../schemas/auditSchema';
-import addressCreationTypeEnum from './enums/addressCreationTypeEnum';
+import mongoose from 'mongoose';
+import auditSchema from '../schemas/auditSchema.js';
+import addressCreationTypeEnum from './enums/addressCreationTypeEnum.js';
+
+const { Schema } = mongoose;
 
 export default new Schema({
   state: {

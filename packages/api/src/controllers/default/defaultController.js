@@ -1,5 +1,5 @@
-import NotImplementedError from '../../errors/NotImplementedError';
-import Controller from '../Controller';
+import NotImplementedError from '../../errors/NotImplementedError.js';
+import Controller from '../Controller.js';
 
 const defaultController = {};
 

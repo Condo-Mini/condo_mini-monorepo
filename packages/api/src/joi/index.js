@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import * as validators from './validators';
+import * as validators from './validators.js';
 
 export default Object.entries(validators).reduce(
   (acc, [type, isValid]) =>

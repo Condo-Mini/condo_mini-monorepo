@@ -1,4 +1,4 @@
-import userRoleEnum from '../models/user/enums/userRoleEnum';
+import userRoleEnum from '../models/user/enums/userRoleEnum.js';
 
 export const userPermissionLevels = Object.freeze({
   [userRoleEnum.SUDO]: 1000,

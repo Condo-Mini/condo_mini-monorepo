@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import Database from '../../database';
-import schema from './addressSchema';
+import Database from '../../database/index.js';
+import schema from './addressSchema.js';
 
 const addressSchema = Database.configSchema({
   schema,

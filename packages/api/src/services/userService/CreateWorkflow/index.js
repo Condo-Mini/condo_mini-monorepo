@@ -1,9 +1,9 @@
-import { encrypt } from '../../../helpers/cryptographyHelper';
-import userRoleEnum from '../../../models/user/enums/userRoleEnum';
-import UserModel from '../../../models/user/UserModel';
-import { getPermissionInfoFromUserRole } from "../commons";
-import BaseWorkflow from '../../BaseWorkflow';
-import { validateUniqueEmailIndex } from './validators';
+import { encrypt } from '../../../helpers/cryptographyHelper.js';
+import userRoleEnum from '../../../models/user/enums/userRoleEnum.js';
+import UserModel from '../../../models/user/UserModel.js';
+import { getPermissionInfoFromUserRole } from '../commons.js';
+import BaseWorkflow from '../../BaseWorkflow.js';
+import { validateUniqueEmailIndex } from './validators.js';
 
 export default class CreateWorkflow extends BaseWorkflow {
   format = (rawInput) => ({

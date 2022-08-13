@@ -1,5 +1,5 @@
-import config from '../config';
-import { verifyTokenAndExtractUser } from '../services/authService/commons';
+import config from '../config/index.js';
+import { verifyTokenAndExtractUser } from '../services/authService/commons.js';
 
 export default async (req) => {
   const { authorization: jwtToken } = req.headers;

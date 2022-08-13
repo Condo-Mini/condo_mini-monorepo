@@ -1,7 +1,7 @@
 import express from 'express';
-import routes from '../routes';
-import loaders from '../loaders';
-import errorHandler from '../middlewares/errorHandler';
+import routes from '../routes/index.js';
+import loaders from '../loaders/index.js';
+import errorHandler from '../middlewares/errorHandler.js';
 
 const app = express();
 const { healthCheck, authRoutes, addressRoutes, userRoutes } = routes;

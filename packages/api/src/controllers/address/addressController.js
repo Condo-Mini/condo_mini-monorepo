@@ -1,8 +1,8 @@
-import userRoleEnum from '../../models/user/enums/userRoleEnum';
-import addressService from '../../services/addressService';
-import httpStatus from '../../constants/httpStatus';
-import AddressDTO from './DTOs/AddressDTO';
-import Controller from '../Controller';
+import userRoleEnum from '../../models/user/enums/userRoleEnum.js';
+import addressService from '../../services/addressService/index.js';
+import httpStatus from '../../constants/httpStatus.js';
+import AddressDTO from './DTOs/AddressDTO.js';
+import Controller from '../Controller.js';
 
 const addressController = {};
 

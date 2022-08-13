@@ -1,7 +1,7 @@
-import Controller from '../Controller';
-import authService from '../../services/authService';
-import httpStatus from '../../constants/httpStatus';
-import LoginDTO from './DTOs/LoginDTO';
+import Controller from '../Controller.js';
+import authService from '../../services/authService/index.js';
+import httpStatus from '../../constants/httpStatus.js';
+import LoginDTO from './DTOs/LoginDTO.js';
 
 const authController = {};
 

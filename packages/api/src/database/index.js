@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import config from '../config';
-import { sanitizeSingleValueToArray } from '../helpers/arrayHelper';
+import config from '../config/index.js';
+import { sanitizeSingleValueToArray } from '../helpers/arrayHelper.js';
 
 export default class Database {
   static async connect(dbName = config.dbName) {
@@ -28,27 +28,17 @@ ${error.message}`)
   static configSchema({ schema, options }) {
     const newSchema = new mongoose.Schema(schema, options);
 
-    newSchema.statics.findWith = async function findWith({
-      excludedIds,
-      ...params
-    }) {
+    newSchema.statics.findWith = async function findWith({ excludedIds, ...params }) {
       return this.findOne({
         ...params,
-        ...(excludedIds
-          ? { id: { $nin: sanitizeSingleValueToArray(excludedIds) } }
-          : {}),
+        ...(excludedIds ? { id: { $nin: sanitizeSingleValueToArray(excludedIds) } } : {}),
       });
     };
 
-    newSchema.statics.existsWith = async function existsWith({
-      excludedIds,
-      ...params
-    }) {
+    newSchema.statics.existsWith = async function existsWith({ excludedIds, ...params }) {
       const document = await this.findOne({
         ...params,
-        ...(excludedIds
-          ? { id: { $nin: sanitizeSingleValueToArray(excludedIds) } }
-          : {}),
+        ...(excludedIds ? { id: { $nin: sanitizeSingleValueToArray(excludedIds) } } : {}),
       });
 
       return Boolean(document);

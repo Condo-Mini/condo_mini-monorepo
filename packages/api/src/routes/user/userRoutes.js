@@ -1,7 +1,7 @@
 import express from 'express';
-import userController from '../../controllers/user/userController';
-import { createUserValidationSchema, getUserValidationSchema } from './userValidationSchemas';
-import Route from '../Route';
+import userController from '../../controllers/user/userController.js';
+import { createUserValidationSchema, getUserValidationSchema } from './userValidationSchemas.js';
+import Route from '../Route.js';
 
 const router = express.Router();
 

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import userRoleEnum from './enums/userRoleEnum';
-import auditSchema from '../schemas/auditSchema';
-import { userPermissionLevels } from '../../constants/userConstants';
+import userRoleEnum from './enums/userRoleEnum.js';
+import auditSchema from '../schemas/auditSchema.js';
+import { userPermissionLevels } from '../../constants/userConstants.js';
 
 const { Schema } = mongoose;
 const { ObjectId } = Schema.Types;

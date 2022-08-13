@@ -1,6 +1,6 @@
-import httpStatus from '../constants/httpStatus';
-import messages from '../messages';
-import BaseError from './BaseError';
+import httpStatus from '../constants/httpStatus.js';
+import messages from '../messages/index.js';
+import BaseError from './BaseError.js';
 
 export default class ValidationError extends BaseError {
   constructor(error) {

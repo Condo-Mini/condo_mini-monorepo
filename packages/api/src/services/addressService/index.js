@@ -1,4 +1,4 @@
-import CreateByZipCodeWorkflow from './CreateByZipCodeWorkflow';
+import CreateByZipCodeWorkflow from './CreateByZipCodeWorkflow/index.js';
 
 export default {
   workflows: {

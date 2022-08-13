@@ -1,7 +1,7 @@
-import CreateWorkflow from './CreateWorkflow';
-import GetByIdWorkflow from './GetByIdWorkflow';
-import * as commons from './commons';
-import * as commonValidators from './commonValidators';
+import CreateWorkflow from './CreateWorkflow/index.js';
+import GetByIdWorkflow from './GetByIdWorkflow/index.js';
+import * as commons from './commons.js';
+import * as commonValidators from './commonValidators.js';
 
 export default {
   workflows: {

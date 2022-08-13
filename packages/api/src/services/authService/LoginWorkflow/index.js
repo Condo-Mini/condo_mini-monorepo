@@ -1,8 +1,8 @@
-import UserModel from '../../../models/user/UserModel';
-import { validateLogin } from './validators';
-import BaseWorkflow from '../../BaseWorkflow';
-import { sign } from '../commons';
-import timeConstants from '../../../constants/timeConstants';
+import UserModel from '../../../models/user/UserModel.js';
+import { validateLogin } from './validators.js';
+import BaseWorkflow from '../../BaseWorkflow.js';
+import { sign } from '../commons.js';
+import timeConstants from '../../../constants/timeConstants.js';
 
 export default class LoginWorkflow extends BaseWorkflow {
   format = (rawInput) => ({

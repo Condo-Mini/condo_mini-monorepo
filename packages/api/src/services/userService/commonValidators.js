@@ -1,7 +1,7 @@
-import UserError from '../../errors/UserError';
-import { compare } from '../../helpers/cryptographyHelper';
-import messages from '../../messages';
-import UserModel from '../../models/user/UserModel';
+import UserError from '../../errors/UserError.js';
+import { compare } from '../../helpers/cryptographyHelper.js';
+import messages from '../../messages/index.js';
+import UserModel from '../../models/user/UserModel.js';
 
 export const validateEmailAndPassword = async ({ email, password }) => {
   const user = await UserModel.findWith({ 'profile.email': email });

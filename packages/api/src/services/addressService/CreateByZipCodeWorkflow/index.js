@@ -1,10 +1,10 @@
-import addressCreationTypeEnum from '../../../models/address/enums/addressCreationTypeEnum';
-import { sanitizeZipCodeReplacementPattern } from '../../../constants/addressContants';
-import { validateUniqueStreetNumberZipCodeIndex } from '../commonValidators';
-import AddressModel from '../../../models/address/AddressModel';
-import { validateStreetRequireness } from './validators';
-import viacepService from '../../external/viacepService';
-import BaseWorkflow from '../../BaseWorkflow';
+import addressCreationTypeEnum from '../../../models/address/enums/addressCreationTypeEnum.js';
+import { sanitizeZipCodeReplacementPattern } from '../../../constants/addressContants.js';
+import { validateUniqueStreetNumberZipCodeIndex } from '../commonValidators.js';
+import AddressModel from '../../../models/address/AddressModel.js';
+import { validateStreetRequireness } from './validators.js';
+import viacepService from '../../external/viacepService/index.js';
+import BaseWorkflow from '../../BaseWorkflow.js';
 
 export default class CreateByZipCodeWorkflow extends BaseWorkflow {
   _sanitizeZipCode = (zipCode) => zipCode.replace(sanitizeZipCodeReplacementPattern, '');

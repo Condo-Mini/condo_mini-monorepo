@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import Database from '../../database';
-import schema from './userSchema';
+import Database from '../../database/index.js';
+import schema from './userSchema.js';
 
 const userSchema = Database.configSchema({
   schema,

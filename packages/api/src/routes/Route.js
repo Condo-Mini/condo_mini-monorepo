@@ -1,5 +1,5 @@
 import rescue from 'express-rescue';
-import ValidationError from '../errors/ValidationError';
+import ValidationError from '../errors/ValidationError.js';
 
 export default class Route {
   constructor(route) {

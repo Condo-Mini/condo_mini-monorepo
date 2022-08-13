@@ -1,7 +1,7 @@
-import UserError from '../../errors/UserError';
-import UserModel from '../../models/user/UserModel';
-import messages from '../../messages';
-import { userPermissionLevels } from '../../constants/userConstants';
+import UserError from '../../errors/UserError.js';
+import UserModel from '../../models/user/UserModel.js';
+import messages from '../../messages/index.js';
+import { userPermissionLevels } from '../../constants/userConstants.js';
 
 export const findById = async (userId) => UserModel.findById(userId);
 

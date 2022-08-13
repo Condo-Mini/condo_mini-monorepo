@@ -1,12 +1,8 @@
-import AddressError from '../../errors/AddressError';
-import messages from '../../messages';
-import AddressModel from '../../models/address/AddressModel';
+import AddressError from '../../errors/AddressError.js';
+import messages from '../../messages/index.js';
+import AddressModel from '../../models/address/AddressModel.js';
 
-export const validateUniqueStreetNumberZipCodeIndex = async ({
-  street,
-  number,
-  zipCode,
-}) => {
+export const validateUniqueStreetNumberZipCodeIndex = async ({ street, number, zipCode }) => {
   const isAddressAlreadyRegistered = await AddressModel.existsWith({
     street,
     number,

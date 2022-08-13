@@ -1,7 +1,7 @@
 import rescue from 'express-rescue';
-import httpStatus from '../constants/httpStatus';
-import authenticationMiddleware from '../middlewares/authenticationMiddleware';
-import permissionMiddleware from '../middlewares/permissionMiddleware';
+import httpStatus from '../constants/httpStatus.js';
+import authenticationMiddleware from '../middlewares/authenticationMiddleware.js';
+import permissionMiddleware from '../middlewares/permissionMiddleware.js';
 
 export default class Controller {
   constructor(validationSchema) {

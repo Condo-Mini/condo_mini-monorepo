@@ -1,17 +1,13 @@
 import axios from 'axios';
-import {
-  sanitizeZipCodeReplacementPattern,
-  zipCodePattern,
-} from '../../../../constants/addressContants';
-import AddressError from '../../../../errors/AddressError';
-import BaseError from '../../../../errors/BaseError';
-import { validateExpressionPatternPolicy } from '../../../../helpers/regExHelper';
-import messages from '../../../../messages';
-import BaseWorkflow from '../../../BaseWorkflow';
+import { sanitizeZipCodeReplacementPattern, zipCodePattern } from '../../../../constants/addressContants.js';
+import AddressError from '../../../../errors/AddressError.js';
+import BaseError from '../../../../errors/BaseError.js';
+import { validateExpressionPatternPolicy } from '../../../../helpers/regExHelper.js';
+import messages from '../../../../messages/index.js';
+import BaseWorkflow from '../../../BaseWorkflow.js';
 
 export default class GetByZipCode extends BaseWorkflow {
-  _sanitizeZipCode = (zipCode) =>
-    zipCode.replace(sanitizeZipCodeReplacementPattern, '');
+  _sanitizeZipCode = (zipCode) => zipCode.replace(sanitizeZipCodeReplacementPattern, '');
 
   format = (rawInput) => ({
     zipCode: this._sanitizeZipCode(rawInput.zipCode),
@@ -35,20 +31,11 @@ export default class GetByZipCode extends BaseWorkflow {
 
     if (viacepResponse.erro) {
       throw new AddressError({
-        message: messages.get(
-          'ERROR.ADDRESS.NOT_FOUND_WITH_ZIP_CODE',
-          sanitizedZipCode
-        ),
+        message: messages.get('ERROR.ADDRESS.NOT_FOUND_WITH_ZIP_CODE', sanitizedZipCode),
       });
     }
 
-    const {
-      uf: state,
-      localidade: city,
-      logradouro: street,
-      ddd: areaCode,
-      complemento: details,
-    } = viacepResponse;
+    const { uf: state, localidade: city, logradouro: street, ddd: areaCode, complemento: details } = viacepResponse;
 
     return {
       state,
@@ -63,9 +50,7 @@ export default class GetByZipCode extends BaseWorkflow {
   process = async (input) => {
     const { zipCode } = input;
 
-    const addressInfo = await this._fetchFormattedAddressInfoFromZipCode(
-      zipCode
-    );
+    const addressInfo = await this._fetchFormattedAddressInfoFromZipCode(zipCode);
 
     return addressInfo;
   };

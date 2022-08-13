@@ -1,5 +1,5 @@
-import httpStatus from '../constants/httpStatus';
-import BaseError from './BaseError';
+import httpStatus from '../constants/httpStatus.js';
+import BaseError from './BaseError.js';
 
 export default class AddressError extends BaseError {
   constructor(error) {

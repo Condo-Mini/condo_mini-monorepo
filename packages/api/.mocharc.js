@@ -2,7 +2,6 @@ module.exports = {
   diff: true,
   color: true,
   extension: ['js'],
-  require: ['@babel/register', 'regenerator-runtime/runtime'],
   package: './package.json',
   reporter: 'spec',
   file: ['tests/setup/index.js'],

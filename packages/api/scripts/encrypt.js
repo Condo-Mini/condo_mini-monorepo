@@ -1,4 +1,4 @@
-const encryptor = require('md5');
+import encryptor from 'md5';
 
 const args = process.argv;
 const input = args[2];

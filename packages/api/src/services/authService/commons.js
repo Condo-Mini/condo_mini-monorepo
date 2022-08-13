@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
-import UserModel from '../../models/user/UserModel';
-import AuthError from '../../errors/AuthError';
-import httpStatus from '../../constants/httpStatus';
-import messages from '../../messages';
-import config from '../../config';
-import timeConstants from '../../constants/timeConstants';
+import UserModel from '../../models/user/UserModel.js';
+import AuthError from '../../errors/AuthError.js';
+import httpStatus from '../../constants/httpStatus.js';
+import messages from '../../messages/index.js';
+import config from '../../config/index.js';
+import timeConstants from '../../constants/timeConstants.js';
 
 export const sign = ({ jwtPayload, expiration: expirationInSeconds = 30 * timeConstants.SECONDS_PER_MINUTE }) => {
   const { jwtSecret } = config;
