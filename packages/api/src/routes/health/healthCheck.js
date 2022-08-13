@@ -7,6 +7,7 @@ const router = express.Router();
 const healthCheckEndpoint = new Route({
   url: 'health/check',
 });
+
 router.get(...healthCheckEndpoint.addStandardRouteMiddlewares(), (_, res) => {
   res.json({
     healthChecks: {
